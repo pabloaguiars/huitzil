@@ -1,0 +1,7 @@
+C:\Users\Admin\Documents\Desarrollo\len y auto I\my-compiler\regex-csharp\regex-csharp\bin\Debug\regex-csharp.exe.config
+C:\Users\Admin\Documents\Desarrollo\len y auto I\my-compiler\regex-csharp\regex-csharp\bin\Debug\regex-csharp.exe
+C:\Users\Admin\Documents\Desarrollo\len y auto I\my-compiler\regex-csharp\regex-csharp\bin\Debug\regex-csharp.pdb
+C:\Users\Admin\Documents\Desarrollo\len y auto I\my-compiler\regex-csharp\regex-csharp\obj\Debug\regex-csharp.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\Desarrollo\len y auto I\my-compiler\regex-csharp\regex-csharp\obj\Debug\regex-csharp.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\Desarrollo\len y auto I\my-compiler\regex-csharp\regex-csharp\obj\Debug\regex-csharp.exe
+C:\Users\Admin\Documents\Desarrollo\len y auto I\my-compiler\regex-csharp\regex-csharp\obj\Debug\regex-csharp.pdb
