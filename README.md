@@ -1,2 +1,2 @@
-# my-compiler
+# huitzil
 Compiler created by me.
