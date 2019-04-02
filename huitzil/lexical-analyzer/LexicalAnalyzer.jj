@@ -25,364 +25,369 @@ PARSE_END(LexicalAnalyzer)
 TOKEN:
 {
 	//TOKEN's name: t_conditional
-	<t_if: "if">{ System.out.println("t_if" + image); } : t_default
-	|<t_elif: "elif">{ System.out.println("t_elif" + image); } : t_default
-	|<t_unless: "unless">{ System.out.println("unless" + image); } : t_default
+	<t_if: "if">{ System.out.println("t_if" + image); } : DEFAULT
+	|<t_elif: "elif">{ System.out.println("t_elif" + image); } : DEFAULT
+	|<t_unless: "unless">{ System.out.println("unless" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_parenthesis_group
-	<t_parenthesis_open: "(">{ System.out.println("t_parenthesis_open" + image); } : t_default
-	|<t_parenthesis_close: ")">{ System.out.println("t_parenthesis_close" + image); } : t_default
+	<t_parenthesis_open: "(">{ System.out.println("t_parenthesis_open" + image); } : DEFAULT
+	|<t_parenthesis_close: ")">{ System.out.println("t_parenthesis_close" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_colons
-	<t_colons: ":">{ System.out.println("t_colons" + image); } : t_default
+	<t_colons: ":">{ System.out.println("t_colons" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_else
-	<t_else: "else">{ System.out.println("t_else" + image); } : t_default
+	<t_else: "else">{ System.out.println("t_else" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_bool
-	<t_true: "true">{ System.out.println("t_true" + image); } : t_default
-	|<t_false: "false">{ System.out.println("t_false" + image); } : t_default
+	<t_true: "true">{ System.out.println("t_true" + image); } : DEFAULT
+	|<t_false: "false">{ System.out.println("t_false" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_asiggnment
-	|<t_assignment: "=">{ System.out.println("t_assignment" + image); } : t_default
+	|<t_assignment: "=">{ System.out.println("t_assignment" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_comparison_operator
-	<t_equal: "=="|"eq">{ System.out.println("t_equal" + image); } : t_default
-	|<t_equal_exactly: "==="|"id">{ System.out.println("t_equal_exactly" + image); } : t_default
-	|<t_less_than: "<"|"lt">{ System.out.println("t_less_than" + image); } : t_default
-	|<t_less_equal: "<="|"le">{ System.out.println("t_less_equal" + image); } : t_default
-	|<t_greater_than: ">"|"gt">{ System.out.println("t_greater_than" + image); } : t_default
-	|<t_greater_equal: ">="|"ge">{ System.out.println("t_greater_equal" + image); } : t_default
-	|<t_not_equal: "!="|"ne">{ System.out.println("t_not_equal" + image); } : t_default
-	|<t_not_equal_exactly: "!=="|"ni">{ System.out.println("not_equal_exactly" + image); } : t_default
+	<t_equal: "=="|"eq">{ System.out.println("t_equal" + image); } : DEFAULT
+	|<t_equal_exactly: "==="|"id">{ System.out.println("t_equal_exactly" + image); } : DEFAULT
+	|<t_less_than: "<"|"lt">{ System.out.println("t_less_than" + image); } : DEFAULT
+	|<t_less_equal: "<="|"le">{ System.out.println("t_less_equal" + image); } : DEFAULT
+	|<t_greater_than: ">"|"gt">{ System.out.println("t_greater_than" + image); } : DEFAULT
+	|<t_greater_equal: ">="|"ge">{ System.out.println("t_greater_equal" + image); } : DEFAULT
+	|<t_not_equal: "!="|"ne">{ System.out.println("t_not_equal" + image); } : DEFAULT
+	|<t_not_equal_exactly: "!=="|"ni">{ System.out.println("not_equal_exactly" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_logic_operator
-	<t_and_logic: "and"|"&&">{ System.out.println("t_and_logic" + image); } : t_default
-	|<t_or_logic: "or"|"||">{ System.out.println("t_or_logic" + image); } : t_default
-	|<t_not_logic: "not"|"!">{ System.out.println("t_not_logic" + image); } : t_default
+	<t_and_logic: "and"|"&&">{ System.out.println("t_and_logic" + image); } : DEFAULT
+	|<t_or_logic: "or"|"||">{ System.out.println("t_or_logic" + image); } : DEFAULT
+	|<t_not_logic: "not"|"!">{ System.out.println("t_not_logic" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_switch
-	<t_switch: "switch">{ System.out.println("t_switch" + image); } : t_default
+	<t_switch: "switch">{ System.out.println("t_switch" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_case
-	<t_case: "case">{ System.out.println("t_case" + image); } : t_default
+	<t_case: "case">{ System.out.println("t_case" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_default
-	<t_default: "default">{ System.out.println("t_default" + image); } : t_default
+	<t_default: "default">{ System.out.println("t_default" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_break
-	<t_break: "break">{ System.out.println("t_break" + image); } : t_default
+	<t_break: "break">{ System.out.println("t_break" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_next
-	|<t_next: "next">{ System.out.println("t_next" + image); } : t_default
+	<t_next: "next">{ System.out.println("t_next" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_not_yet
-	<t_not_yet: "not yet">{ System.out.println("t_not_yet" + image); } : t_default
+	<t_not_yet: "not yet">{ System.out.println("t_not_yet" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_again
-	|<t_again: "again">{ System.out.println("t_again" + image); } : t_default
+	|<t_again: "again">{ System.out.println("t_again" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_loop
-	<t_for: "for">{ System.out.println("t_for" + image); } : t_default
-	|<t_while: "while">{ System.out.println("t_while" + image); } : t_default
-	|<t_until: "until">{ System.out.println("t_until" + image); } : t_default
-	|<t_iterator: "iterator">{ System.out.println("t_iterator" + image); } : t_default
-	|<t_foreach: "foreach">{ System.out.println("t_foreach" + image); } : t_default
+	<t_for: "for">{ System.out.println("t_for" + image); } : DEFAULT
+	|<t_while: "while">{ System.out.println("t_while" + image); } : DEFAULT
+	|<t_until: "until">{ System.out.println("t_until" + image); } : DEFAULT
+	|<t_iterator: "iterator">{ System.out.println("t_iterator" + image); } : DEFAULT
+	|<t_foreach: "foreach">{ System.out.println("t_foreach" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_do
-	<t_do: "do">{ System.out.println("t_do" + image); } : t_default
+	<t_do: "do">{ System.out.println("t_do" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_range
-	<t_range: "range"|"..">{ System.out.println("t_range" + image); } : t_default
+	<t_range: "range"|"..">{ System.out.println("t_range" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_comma
-	<t_comma: ",">{ System.out.println("t_comma" + image); } : t_default
+	<t_comma: ",">{ System.out.println("t_comma" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_output
-	<t_output: "output">{ System.out.println("t_output" + image); } : t_default
+	<t_output: "output">{ System.out.println("t_output" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_text
-	<t_text: "'"|"\"">{ System.out.println("t_text" + image); } : t_default
+	<t_text: "'"|"\"">{ System.out.println("t_text" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_input
-	<t_input: "input">{ System.out.println("t_input" + image); } : t_default
+	<t_input: "input">{ System.out.println("t_input" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_aritmethic_operator
-	<t_plus: "+">{ System.out.println("t_plus" + image); } : t_default
-	|<t_minus: "-">{ System.out.println("t_minus" + image); } : t_default
-	|<t_division: "/">{ System.out.println("t_division" + image); } : t_default
-	|<t_division_floor: "//">{ System.out.println("dt_ivision_floor" + image); } : t_default
-	|<t_multiplication: "*">{ System.out.println("t_multiplication" + image); } : t_default
-	|<t_pow: "**">{ System.out.println("t_pow" + image); } : t_default
-	|<t_module: "%">{ System.out.println("t_module" + image); } : t_default
+	<t_plus: "+">{ System.out.println("t_plus" + image); } : DEFAULT
+	|<t_minus: "-">{ System.out.println("t_minus" + image); } : DEFAULT
+	|<t_division: "/">{ System.out.println("t_division" + image); } : DEFAULT
+	|<t_division_floor: "//">{ System.out.println("dt_ivision_floor" + image); } : DEFAULT
+	|<t_multiplication: "*">{ System.out.println("t_multiplication" + image); } : DEFAULT
+	|<t_pow: "**">{ System.out.println("t_pow" + image); } : DEFAULT
+	|<t_module: "%">{ System.out.println("t_module" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_aritmethic_operator_assignment
-	<t_plus_assignment: "+=">{ System.out.println("t_plus_assignment" + image); } : t_default
-	|<t_minus_assignment: "-=">{ System.out.println("t_minus_assignment" + image); } : t_default
-	|<t_multiplication_assignment: "*=">{ System.out.println("t_multiplication_assignment" + image); } : t_default
-	|<t_division_assignment: "/=">{ System.out.println("t_division_assignment" + image); } : t_default
-	|<t_division_floor_assignment: "//=">{ System.out.println("t_division_floor_assignment" + image); } : t_default
-	|<t_pow_assignment: "**=">{ System.out.println("t_pow_assignment" + image); } : t_default
-	|<t_module_assignment: "%=">{ System.out.println("t_module_assignment" + image); } : t_default
+	<t_plus_assignment: "+=">{ System.out.println("t_plus_assignment" + image); } : DEFAULT
+	|<t_minus_assignment: "-=">{ System.out.println("t_minus_assignment" + image); } : DEFAULT
+	|<t_multiplication_assignment: "*=">{ System.out.println("t_multiplication_assignment" + image); } : DEFAULT
+	|<t_division_assignment: "/=">{ System.out.println("t_division_assignment" + image); } : DEFAULT
+	|<t_division_floor_assignment: "//=">{ System.out.println("t_division_floor_assignment" + image); } : DEFAULT
+	|<t_pow_assignment: "**=">{ System.out.println("t_pow_assignment" + image); } : DEFAULT
+	|<t_module_assignment: "%=">{ System.out.println("t_module_assignment" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_bitwise_operator
-	<t_and_binary: "&">{ System.out.println("t_and_binary" + image); } : t_default
-	|<t_or_binary: "|">{ System.out.println("t_or_binary" + image); } : t_default
-	|<t_xor_binary: "^">{ System.out.println("t_xor_binary" + image); } : t_default
-	|<t_complement_binary: "~">{ System.out.println("t_complement_binary" + image); } : t_default
-	|<t_left_shift_binary: "<<">{ System.out.println("t_left_shift_binary" + image); } : t_default
-	|<t_right_shift_binary: ">>">{ System.out.println("t_right_shift_binary" + image); } : t_default
+	<t_and_binary: "&">{ System.out.println("t_and_binary" + image); } : DEFAULT
+	|<t_or_binary: "|">{ System.out.println("t_or_binary" + image); } : DEFAULT
+	|<t_xor_binary: "^">{ System.out.println("t_xor_binary" + image); } : DEFAULT
+	|<t_complement_binary: "~">{ System.out.println("t_complement_binary" + image); } : DEFAULT
+	|<t_left_shift_binary: "<<">{ System.out.println("t_left_shift_binary" + image); } : DEFAULT
+	|<t_right_shift_binary: ">>">{ System.out.println("t_right_shift_binary" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_bitwise_operator_assignment
-	<t_and_binary_assignment: "&=">{ System.out.println("t_and_binary_assignment" + image); } : t_default
-	|<t_or_binary_assignment: "|=">{ System.out.println("t_or_binary_assignment" + image); } : t_default
-	|<t_xor_binary_assignment: "^=">{ System.out.println("t_xor_binary_assignment" + image); } : t_default
-	|<t_complement_binary_assignment: "~=">{ System.out.println("t_complement_binary_assignment" + image); } : t_default
-	|<t_left_shift_binary_assignment: "<<=">{ System.out.println("t_left_shift_binary_assignment" + image); } : t_default
-	|<t_right_shift_binary_assignment: ">>=">{ System.out.println("t_right_shift_binary_assignment" + image); } : t_default
+	<t_and_binary_assignment: "&=">{ System.out.println("t_and_binary_assignment" + image); } : DEFAULT
+	|<t_or_binary_assignment: "|=">{ System.out.println("t_or_binary_assignment" + image); } : DEFAULT
+	|<t_xor_binary_assignment: "^=">{ System.out.println("t_xor_binary_assignment" + image); } : DEFAULT
+	|<t_complement_binary_assignment: "~=">{ System.out.println("t_complement_binary_assignment" + image); } : DEFAULT
+	|<t_left_shift_binary_assignment: "<<=">{ System.out.println("t_left_shift_binary_assignment" + image); } : DEFAULT
+	|<t_right_shift_binary_assignment: ">>=">{ System.out.println("t_right_shift_binary_assignment" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_type_operator
-	<t_typeof: "typeof">{ System.out.println("t_typeof" + image); } : t_default
-	|<t_instanceof: "instanceof">{ System.out.println("t_instanceof" + image); } : t_default
-	|<t_convert: "convert">{ System.out.println("t_convert" + image); } : t_default
+	<t_typeof: "typeof">{ System.out.println("t_typeof" + image); } : DEFAULT
+	|<t_instanceof: "instanceof">{ System.out.println("t_instanceof" + image); } : DEFAULT
+	|<t_convert: "convert">{ System.out.println("t_convert" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_data_type
-	<t_boolean: "boolean">{ System.out.println("t_boolean" + image); } : t_default
-	|<t_string: "string">{ System.out.println("t_string" + image); } : t_default
-	|<t_int: "int">{ System.out.println("t_int" + image); } : t_default
-	|<t_float: "float">{ System.out.println("t_float" + image); } : t_default
-	|<t_snot: "snot">{ System.out.println("t_snot" + image); } : t_default
-	|<t_complex: "complex">{ System.out.println("t_complex" + image); } : t_default
-	|<t_list: "list">{ System.out.println("t_list" + image); } : t_default
-	|<t_tuple: "tuple">{ System.out.println("t_tuple" + image); } : t_default
-	|<t_queue: "queue">{ System.out.println("t_queue" + image); } : t_default
-	|<t_stack: "stack">{ System.out.println("t_stack" + image); } : t_default
-	|<t_set: "set">{ System.out.println("t_set" + image); } : t_default
-	|<t_dictionary: "dictionary">{ System.out.println("t_dictionary" + image); } : t_default
-	|<t_char: "char">{ System.out.println("t_char" + image); } : t_default
-	|<t_datetime: "datetime">{ System.out.println("t_datetime" + image); } : t_default
-	|<t_timestamp: "timestamp">{ System.out.println("t_timestamp" + image); } : t_default
-	|<t_file: "file">{ System.out.println("t_file" + image); } : t_default
-	|<t_random: "random">{ System.out.println("t_random" + image); } : t_default
+	<t_boolean: "boolean">{ System.out.println("t_boolean" + image); } : DEFAULT
+	|<t_string: "string">{ System.out.println("t_string" + image); } : DEFAULT
+	|<t_int: "int">{ System.out.println("t_int" + image); } : DEFAULT
+	|<t_float: "float">{ System.out.println("t_float" + image); } : DEFAULT
+	|<t_snot: "snot">{ System.out.println("t_snot" + image); } : DEFAULT
+	|<t_complex: "complex">{ System.out.println("t_complex" + image); } : DEFAULT
+	|<t_list: "list">{ System.out.println("t_list" + image); } : DEFAULT
+	|<t_tuple: "tuple">{ System.out.println("t_tuple" + image); } : DEFAULT
+	|<t_queue: "queue">{ System.out.println("t_queue" + image); } : DEFAULT
+	|<t_stack: "stack">{ System.out.println("t_stack" + image); } : DEFAULT
+	|<t_set: "set">{ System.out.println("t_set" + image); } : DEFAULT
+	|<t_dictionary: "dictionary">{ System.out.println("t_dictionary" + image); } : DEFAULT
+	|<t_char: "char">{ System.out.println("t_char" + image); } : DEFAULT
+	|<t_datetime: "datetime">{ System.out.println("t_datetime" + image); } : DEFAULT
+	|<t_timestamp: "timestamp">{ System.out.println("t_timestamp" + image); } : DEFAULT
+	|<t_file: "file">{ System.out.println("t_file" + image); } : DEFAULT
+	|<t_random: "random">{ System.out.println("t_random" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_membership_operator
-	<t_in: "in">{ System.out.println("t_in" + image); } : t_default
-	|<t_not_in: "not in">{ System.out.println("t_not_in" + image); } : t_default
+	<t_in: "in">{ System.out.println("t_in" + image); } : DEFAULT
+	|<t_not_in: "not in">{ System.out.println("t_not_in" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_identity_operator
-	<t_is: "is">{ System.out.println("t_is" + image); } : t_default
-	|<t_is_not: "is not">{ System.out.println("t_is_not" + image); } : t_default
+	<t_is: "is">{ System.out.println("t_is" + image); } : DEFAULT
+	|<t_is_not: "is not">{ System.out.println("t_is_not" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_array
-	<t_square_bracket_open: "[">{ System.out.println("t_square_bracket_open" + image); } : t_default
-	|<t_square_bracket_close: "]">{ System.out.println("t_square_bracket_close" + image); } : t_default
+	<t_square_bracket_open: "[">{ System.out.println("t_square_bracket_open" + image); } : DEFAULT
+	|<t_square_bracket_close: "]">{ System.out.println("t_square_bracket_close" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_set
-	<t_curly_open: "{">{ System.out.println("t_curly_open" + image); } : t_default
-	|<t_curly_close: "}">{ System.out.println("t_curly_close" + image); } : t_default
+	<t_curly_open: "{">{ System.out.println("t_curly_open" + image); } : DEFAULT
+	|<t_curly_close: "}">{ System.out.println("t_curly_close" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_try
-	<t_try: "try">{ System.out.println("try" + image); } : t_default
+	<t_try: "try">{ System.out.println("try" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_catch
-	<t_catch: "catch">{ System.out.println("t_catch" + image); } : t_default
+	<t_catch: "catch">{ System.out.println("t_catch" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_finally
-	<t_finally: "finally">{ System.out.println("t_finally" + image); } : t_default
+	<t_finally: "finally">{ System.out.println("t_finally" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_throw
-	<t_throw: "throw">{ System.out.println("t_throw" + image); } : t_default
+	<t_throw: "throw">{ System.out.println("t_throw" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_null
-	<t_null: "null">{ System.out.println("t_null" + image); } : t_default
+	<t_null: "null">{ System.out.println("t_null" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_undefined
-	<t_undefined: "undefined">{ System.out.println("t_undefined" + image); } : t_default
+	<t_undefined: "undefined">{ System.out.println("t_undefined" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_method
-	<t_method: "method">{ System.out.println("t_method" + image); } : t_default
+	<t_method: "method">{ System.out.println("t_method" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_lambda
-	<t_lambda: "lambda"|"=>">{ System.out.println("t_lambda" + image); } : t_default
+	<t_lambda: "lambda"|"=>">{ System.out.println("t_lambda" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_return
-	<t_return: "return">{ System.out.println("t_return" + image); } : t_default
+	<t_return: "return">{ System.out.println("t_return" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_data_security
-	<t_public: "public">{ System.out.println("t_public" + image); } : t_default
-	|<t_private: "private">{ System.out.println("t_private" + image); } : t_default
-	|<t_protected: "protected">{ System.out.println("t_protected" + image); } : t_default
-	|<t_internal: "internal">{ System.out.println("t_internal" + image); } : t_default
+	<t_public: "public">{ System.out.println("t_public" + image); } : DEFAULT
+	|<t_private: "private">{ System.out.println("t_private" + image); } : DEFAULT
+	|<t_protected: "protected">{ System.out.println("t_protected" + image); } : DEFAULT
+	|<t_internal: "internal">{ System.out.println("t_internal" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_class
-	<t_class: "class">{ System.out.println("t_class" + image); } : t_default
+	<t_class: "class">{ System.out.println("t_class" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_class_construct
-	<t_construct: "construct">{ System.out.println("t_construct" + image); } : t_default
+	<t_construct: "construct">{ System.out.println("t_construct" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_class_destruct
-	<destruct: "t_destruct">{ System.out.println("t_destruct" + image); } : t_default
+	<destruct: "destruct">{ System.out.println("t_destruct" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_attribute
-	<t_attribute: "attribute">{ System.out.println("t_attribute" + image); } : t_default
+	<t_attribute: "attribute">{ System.out.println("t_attribute" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_import
-	<t_import: "import">{ System.out.println("t_import" + image); } : t_default
+	<t_import: "import">{ System.out.println("t_import" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_strict
-	<t_strict: "strict">{ System.out.println("t_strict" + image); } : t_default
+	<t_strict: "strict">{ System.out.println("t_strict" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_var
-	<t_var: "var">{ System.out.println("t_var" + image); } : t_default
+	<t_var: "var">{ System.out.println("t_var" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_escape_character
-	<t_escape_character: "\\">{ System.out.println("t_escape_character" + image); } : t_default
-	|<t_backspace: "\\b">{ System.out.println("t_backspace" + image); } : t_default
-	|<t_form_feed: "\\f">{ System.out.println("t_form_feed" + image); } : t_default
-	|<t_new_line: "\\n">{ System.out.println("t_new_line" + image); } : t_default
-	|<t_carriage_return: "\\r">{ System.out.println("t_carriage_return" + image); } : t_default
-	|<t_horizontal_tab: "\\t">{ System.out.println("t_horizontal_tab" + image); } : t_default
-	|<t_vertical_tab: "\\v">{ System.out.println("t_vertical_tab" + image); } : t_default
-	|<t_single_quote: "\\'">{ System.out.println("t_single_quote" + image); } : t_default
-	|<t_doble_quote: "\\\"">{ System.out.println("t_doble_quote" + image); } : t_default
-	|<t_backslash: "\\\\">{ System.out.println("t_backslash" + image); } : t_default
+	<t_escape_character: "\\">{ System.out.println("t_escape_character" + image); } : DEFAULT
+	|<t_backspace: "\\b">{ System.out.println("t_backspace" + image); } : DEFAULT
+	|<t_form_feed: "\\f">{ System.out.println("t_form_feed" + image); } : DEFAULT
+	|<t_new_line: "\\n">{ System.out.println("t_new_line" + image); } : DEFAULT
+	|<t_carriage_return: "\\r">{ System.out.println("t_carriage_return" + image); } : DEFAULT
+	|<t_horizontal_tab: "\\t">{ System.out.println("t_horizontal_tab" + image); } : DEFAULT
+	|<t_vertical_tab: "\\v">{ System.out.println("t_vertical_tab" + image); } : DEFAULT
+	|<t_single_quote: "\\'">{ System.out.println("t_single_quote" + image); } : DEFAULT
+	|<t_doble_quote: "\\\"">{ System.out.println("t_doble_quote" + image); } : DEFAULT
+	|<t_backslash: "\\\\">{ System.out.println("t_backslash" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_string_operator
-	<t_split: "split">{ System.out.println("t_split" + image); } : t_default
-	|<t_replace: "replace">{ System.out.println("t_replace" + image); } : t_default
-	|<t_flip: "flip">{ System.out.println("t_flip" + image); } : t_default
-	|<t_lower: "lower">{ System.out.println("t_lower" + image); } : t_default
-	|<t_upper: "upper">{ System.out.println("t_upper" + image); } : t_default
-	|<t_trim: "trim">{ System.out.println("t_trim" + image); } : t_default
-	|<t_lenght: "lenght">{ System.out.println("t_lenght" + image); } : t_default
-	|<t_capitalize: "capitalize">{ System.out.println("t_capitalize" + image); } : t_default
-	|<t_index: "index">{ System.out.println("t_index" + image); } : t_default
-	|<t_concatenate: "concatenate">{ System.out.println("t_concatenate" + image); } : t_default
+	<t_split: "split">{ System.out.println("t_split" + image); } : DEFAULT
+	|<t_replace: "replace">{ System.out.println("t_replace" + image); } : DEFAULT
+	|<t_flip: "flip">{ System.out.println("t_flip" + image); } : DEFAULT
+	|<t_lower: "lower">{ System.out.println("t_lower" + image); } : DEFAULT
+	|<t_upper: "upper">{ System.out.println("t_upper" + image); } : DEFAULT
+	|<t_trim: "trim">{ System.out.println("t_trim" + image); } : DEFAULT
+	|<t_lenght: "lenght">{ System.out.println("t_lenght" + image); } : DEFAULT
+	|<t_capitalize: "capitalize">{ System.out.println("t_capitalize" + image); } : DEFAULT
+	|<t_index: "index">{ System.out.println("t_index" + image); } : DEFAULT
+	|<t_concatenate: "concatenate">{ System.out.println("t_concatenate" + image); } : DEFAULT
 }
 TOKEN:
 {
-	//TOKEN's name: t_concatenate
-	<t_concatenate_operator: "."|".=">{ System.out.println("t_concatenate_operator" + image); } : t_default
+	//TOKEN's name: t_dot
+	<t_concatenate_operator: ".">{ System.out.println("t_dot" + image); } : DEFAULT
+}
+{
+	//TOKEN's name: t_dot_assignment
+	<t_concatenate_operator: ".=">{ System.out.println("t_dot_assignment" + image); } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_values
-	<t_letter: ["a"-"z","A"-"Z"]>{ System.out.println("t_letter" + image); } : t_default
-	|<t_letters: (<t_letter>)+>{ System.out.println("t_letters" + image); } : t_default
-	|<t_digit: ["0"-"9"]>{ System.out.println("t_digit" + image); } : t_default
-	|<t_digits: (<t_digit>)+>{ System.out.println("t_digits" + image); } : t_default
-	|<t_var_name: (<t_letter>|"_")(<t_letter>|"_")*>{ System.out.println("t_var_name" + image); } : t_default
-	|<t_char_value: "\""."\""|"'"."'">{ System.out.println("t_char_value" + image); } : t_default
-	|<t_string_value: ("'")([^]|\n\r)*("'")|("\"")([^(<escape_character>)]|\n\r)*("\"")>{ System.out.println("t_string_value" + image); } : t_default
-	|<t_int_value: (-|+)?<t_digits>>{ System.out.println("t_int_value" + image); } : t_default
-	|<t_float_value: <int_number>"."<t_digits>>{ System.out.println("t_float_value" + image); } : t_default
-	|<t_snot_value: <int_number>("."<t_digits>)?(("e"|"E")("-"|"+")?["0"-"9"]+)?>{ System.out.println("t_snot_value" + image); } : t_default
-	|<t_complex_value: (<int_number>("."<t_digits>)?)(<int_number>("."<t_digits>)?)"i">{ System.out.println("t_complex_value" + image); } : t_default
+	<t_letter: ["a"-"z","A"-"Z"]>{ System.out.println("t_letter" + image); } : DEFAULT
+	|<t_letters: (<t_letter>)+>{ System.out.println("t_letters" + image); } : DEFAULT
+	|<t_digit: ["0"-"9"]>{ System.out.println("t_digit" + image); } : DEFAULT
+	|<t_digits: (<t_digit>)+>{ System.out.println("t_digits" + image); } : DEFAULT
+	|<t_var_name: (<t_letter>|"_")(<t_letter>|"_"|<t_digit>)*>{ System.out.println("t_var_name" + image); } : DEFAULT
+	|<t_char_value: ("\""."\"")|("'"."'")>{ System.out.println("t_char_value" + image); } : DEFAULT
+	|<t_string_value: (("'")([^]|\n\r)*("'"))|(("\"")([^])|(\n\r)*("\""))>{ System.out.println("t_string_value" + image); } : DEFAULT
+	|<t_int_value: (-|+)?<t_digits>>{ System.out.println("t_int_value" + image); } : DEFAULT
+	|<t_float_value: <t_int_value>"."<t_digits>>{ System.out.println("t_float_value" + image); } : DEFAULT
+	|<t_snot_value: <t_int_value>("."<t_digits>)?(("e"|"E")("-"|"+")?<t_digits>)?>{ System.out.println("t_snot_value" + image); } : DEFAULT
+	|<t_complex_value: (<t_int_value>("."<t_digits>)?)(<t_int_value>("."<t_digits>)?)"i">{ System.out.println("t_complex_value" + image); } : DEFAULT
 }
 SKIP:
 {
-	<t_comment: "#"([~>]|.*) >{ System.out.println("t_comment" + image); } : t_default
-	|<t_comment_multiline_open: "#>"([^]|[\r\n])*+>{ System.out.println("t_comment_multiline" + image); } : t_default
-	|<t_comment_multiline_close: "<#">{ System.out.println("t_comment_multiline" + image); } : t_default
+	//TOKEN's name: t_comment
+	<t_comment: "#"([~>]|.*)>{ System.out.println("t_comment" + image); } : DEFAULT
+	|<t_comment_multiline_open: "#>"([^]|[\r\n])*>{ System.out.println("t_comment_multiline" + image); } : DEFAULT
+	|<t_comment_multiline_close: "<#">{ System.out.println("t_comment_multiline" + image); } : DEFAULT
 
 }

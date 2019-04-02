@@ -1,14 +1,14 @@
 # previus token type
-previus_token = "asd"
+previus_token = "no_previus_token"
 
 def BuildToken(words):
     global previus_token
     # if previus token is different to current token, build new token
     if(previus_token != words[0]):
-        msj = "TOKEN:\n{\n\t//TOKEN's name: " + words[0]
-        print(msj)
-    # print new regex
-    msj = "\t<" + words[1] + ": " + words[2] + "- ->{ System.out.println(\"" + words[1] + "\" + image); } : DEFAULT"
+        msj = "TOKEN:\n{\n\t//TOKEN's name: t_" + words[0] + "\n\t<t_" + words[1] + ": " + words[2] + ">{ System.out.println(\"t_" + words[1] + "\" + image); } : DEFAULT"
+    else:
+        # print new regex
+        msj = "\t|<t_" + words[1] + ": " + words[2] + ">{ System.out.println(\"t_" + words[1] + ": \" + image); } : DEFAULT"
     print(msj)
     previus_token = words[0]
     return
@@ -32,11 +32,13 @@ def MatchFile(path):
 go = True
 while(go):
     # input a file path
-    path = input("Input a file path [.txt] with tha tokens table: ")
+    #path = input("Input a file path [.txt] with tha tokens table: ")
+    path = input()
     MatchFile(path)
 
     # new input?
-    answer = input("\nNew input file?[y/n]: ")
+    #answer = input("\nNew input file?[y/n]: ")
+    answer = input()
     if(answer == "n"):
         go = False
     else:
