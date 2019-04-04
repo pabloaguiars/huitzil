@@ -5,10 +5,10 @@ def BuildToken(words):
     global previus_token
     # if previus token is different to current token, build new token
     if(previus_token != words[0]):
-        msj = "TOKEN:\n{\n\t//TOKEN's name: t_" + words[0] + "\n\t<t_" + words[1] + ": " + words[2] + ">{ System.out.println(\"t_" + words[1] + "\" + image); } : DEFAULT"
+        msj = "TOKEN:\n{\n\t//TOKEN's name: " + words[0] + "\n\t<t_" + words[1] + ": " + words[2] + "- ->{ System.out.println(\"t_" + words[1] + "\" + image); } : DEFAULT"
     else:
         # print new regex
-        msj = "\t|<t_" + words[1] + ": " + words[2] + ">{ System.out.println(\"t_" + words[1] + ": \" + image); } : DEFAULT"
+        msj = "\t|<t_" + words[1] + ": " + words[2] + "- ->{ System.out.println(\"t_" + words[1] + ": \" + image); } : DEFAULT"
     print(msj)
     previus_token = words[0]
     return
