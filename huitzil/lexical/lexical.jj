@@ -1,0 +1,455 @@
+/* Lexical Huitzil */
+
+PARSER_BEGIN(Lexical)
+
+//package for all files in the lexical/ directory
+package lexical;
+//public class
+public class Lexical { }
+
+PARSER_END(Lexical)
+
+//TOKENS
+SKIP:
+{
+	" "
+	|"\t"
+	|"\n"
+	|"\r"
+
+}
+TOKEN:
+{
+	//TOKEN's name: t_conditional
+	<t_if: "if">{  } : DEFAULT
+	|<t_elif: "elif">{  } : DEFAULT
+	|<t_unless: "unless">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_parenthesis_group
+	<t_parenthesis_open: "(">{  } : DEFAULT
+	|<t_parenthesis_close: ")">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_colons
+	<t_colons: ":">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_else
+	<t_else: "else">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_bool
+	<t_true: "true">{  } : DEFAULT
+	|<t_false: "false">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_asiggnment
+	<t_assignment: "=">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_comparison_operator
+	<t_equal: "=="|"eq">{  } : DEFAULT
+	|<t_equal_exactly: "==="|"id">{  } : DEFAULT
+	|<t_less_than: "<"|"lt">{  } : DEFAULT
+	|<t_less_equal: "<="|"le">{  } : DEFAULT
+	|<t_greater_than: ">"|"gt">{  } : DEFAULT
+	|<t_greater_equal: ">="|"ge">{  } : DEFAULT
+	|<t_not_equal: "!="|"ne">{  } : DEFAULT
+	|<t_not_equal_exactly: "!=="|"ni">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_logic_operator
+	<t_and_logic: "and"|"&&">{  } : DEFAULT
+	|<t_or_logic: "or"|"||">{  } : DEFAULT
+	|<t_not_logic: "not"|"!">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_switch
+	<t_switch: "switch">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_case
+	<t_case: "case">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_default
+	<t_default: "default">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_break
+	<t_break: "break">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_next
+	<t_next: "next">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_not_yet
+	<t_not_yet: "not_yet">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_again
+	<t_again: "again">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_loop
+	<t_for: "for">{  } : DEFAULT
+	|<t_while: "while">{  } : DEFAULT
+	|<t_until: "until">{  } : DEFAULT
+	|<t_iterator: "iterator">{  } : DEFAULT
+	|<t_foreach: "foreach">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_do
+	<t_do: "do">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_range
+	<t_range: "range"|"..">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_comma
+	<t_comma: ",">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_output
+	<t_output: "output">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_text
+	<t_text: "'"|"\"">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_input
+	<t_input: "input">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_aritmethic_operator
+	<t_plus: "+">{  } : DEFAULT
+	|<t_minus: "-">{  } : DEFAULT
+	|<t_division: "/">{  } : DEFAULT
+	|<t_division_floor: "//">{  } : DEFAULT
+	|<t_multiplication: "*">{  } : DEFAULT
+	|<t_pow: "**">{  } : DEFAULT
+	|<t_module: "%">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_aritmethic_operator_assignment
+	<t_plus_assignment: "+=">{  } : DEFAULT
+	|<t_minus_assignment: "-=">{  } : DEFAULT
+	|<t_multiplication_assignment: "*=">{  } : DEFAULT
+	|<t_division_assignment: "/=">{  } : DEFAULT
+	|<t_division_floor_assignment: "//=">{  } : DEFAULT
+	|<t_pow_assignment: "**=">{  } : DEFAULT
+	|<t_module_assignment: "%=">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_bitwise_operator
+	<t_and_binary: "&">{  } : DEFAULT
+	|<t_or_binary: "|">{  } : DEFAULT
+	|<t_xor_binary: "^">{  } : DEFAULT
+	|<t_complement_binary: "~">{  } : DEFAULT
+	|<t_left_shift_binary: "<<">{  } : DEFAULT
+	|<t_right_shift_binary: ">>">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_bitwise_operator_assignment
+	<t_and_binary_assignment: "&=">{  } : DEFAULT
+	|<t_or_binary_assignment: "|=">{  } : DEFAULT
+	|<t_xor_binary_assignment: "^=">{  } : DEFAULT
+	|<t_complement_binary_assignment: "~=">{  } : DEFAULT
+	|<t_left_shift_binary_assignment: "<<=">{  } : DEFAULT
+	|<t_right_shift_binary_assignment: ">>=">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_type_operator
+	<t_type_of: "type_of">{  } : DEFAULT
+	|<t_instance_of: "instance_of">{  } : DEFAULT
+	|<t_convert: "convert">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_data_type
+	<t_boolean: "boolean">{  } : DEFAULT
+	|<t_string: "string">{  } : DEFAULT
+	|<t_int: "int">{  } : DEFAULT
+	|<t_float: "float">{  } : DEFAULT
+	|<t_snot: "snot">{  } : DEFAULT
+	|<t_complex: "complex">{  } : DEFAULT
+	|<t_list: "list">{  } : DEFAULT
+	|<t_tuple: "tuple">{  } : DEFAULT
+	|<t_queue: "queue">{  } : DEFAULT
+	|<t_stack: "stack">{  } : DEFAULT
+	|<t_set: "set">{  } : DEFAULT
+	|<t_dictionary: "dictionary">{  } : DEFAULT
+	|<t_char: "char">{  } : DEFAULT
+	|<t_datetime: "datetime">{  } : DEFAULT
+	|<t_timestamp: "timestamp">{  } : DEFAULT
+	|<t_file: "file">{  } : DEFAULT
+	|<t_random: "random">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_membership_operator
+	<t_in: "in">{  } : DEFAULT
+	|<t_not_in: "not_in">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_identity_operator
+	<t_is: "is">{  } : DEFAULT
+	|<t_not_is: "not_is">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_array
+	<t_square_bracket_open: "[">{  } : DEFAULT
+	|<t_square_bracket_close: "]">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_set
+	<t_curly_open: "{">{  } : DEFAULT
+	|<t_curly_close: "}">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_try
+	<t_try: "try">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_catch
+	<t_catch: "catch">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_finally
+	<t_finally: "finally">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_throw
+	<t_throw: "throw">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_null
+	<t_null: "null">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_undefined
+	<t_undefined: "undefined">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_method
+	<t_method: "method">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_lambda
+	<t_lambda: "lambda"|"=>">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_return
+	<t_return: "return">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_data_security
+	<t_public: "public">{  } : DEFAULT
+	|<t_private: "private">{  } : DEFAULT
+	|<t_protected: "protected">{  } : DEFAULT
+	|<t_internal: "internal">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_class
+	<t_class: "class">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_class_construct
+	<t_construct: "construct">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_class_destruct
+	<t_destruct: "destruct">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_attribute
+	<t_attribute: "attribute">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_my
+	<t_my: "my">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_import
+	<t_import: "import">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_strict
+	<t_strict: "strict">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_var
+	<t_var: "var">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_escape_character
+	<t_escape_character: "\\">{  } : DEFAULT
+	|<t_backspace: "\\b">{  } : DEFAULT
+	|<t_form_feed: "\\f">{  } : DEFAULT
+	|<t_new_line: "\\n">{  } : DEFAULT
+	|<t_carriage_return: "\\r">{  } : DEFAULT
+	|<t_horizontal_tab: "\\t">{  } : DEFAULT
+	|<t_vertical_tab: "\\v">{  } : DEFAULT
+	|<t_single_quote: "\\'">{  } : DEFAULT
+	|<t_doble_quote: "\\\"">{  } : DEFAULT
+	|<t_backslash: "\\\\">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_string_method
+	<t_split: "split">{  } : DEFAULT
+	|<t_replace: "replace">{  } : DEFAULT
+	|<t_flip: "flip">{  } : DEFAULT
+	|<t_lower: "lower">{  } : DEFAULT
+	|<t_upper: "upper">{  } : DEFAULT
+	|<t_trim: "trim">{  } : DEFAULT
+	|<t_lenght: "lenght">{  } : DEFAULT
+	|<t_capitalize: "capitalize">{  } : DEFAULT
+	|<t_index: "index">{  } : DEFAULT
+	|<t_concatenate: "concatenate">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_dot
+	<t_dot: ".">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_dot_assignment
+	<t_dot_assignment: ".=">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_number_method
+	<t_abs: "abs">{  } : DEFAULT
+	|<t_ceil: "ceil">{  } : DEFAULT
+	|<t_cmp: "cmp">{  } : DEFAULT
+	|<t_exp: "exp">{  } : DEFAULT
+	|<t_fabs: "fabs">{  } : DEFAULT
+	|<t_floor: "floor">{  } : DEFAULT
+	|<t_log: "log">{  } : DEFAULT
+	|<t_log10: "log10">{  } : DEFAULT
+	|<t_max: "max">{  } : DEFAULT
+	|<t_min: "min">{  } : DEFAULT
+	|<t_modf: "modf">{  } : DEFAULT
+	|<t_pow_prefix: "pow">{  } : DEFAULT
+	|<t_round: "round">{  } : DEFAULT
+	|<t_sqrt: "sqrt">{  } : DEFAULT
+	|<t_random_range: "random_range">{  } : DEFAULT
+	|<t_choice: "choice">{  } : DEFAULT
+	|<t_random_generate: "random_generate">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_trigonometric_method
+	<t_acos: "acos">{  } : DEFAULT
+	|<t_asin: "asin">{  } : DEFAULT
+	|<t_atan: "atan">{  } : DEFAULT
+	|<t_cos: "cos">{  } : DEFAULT
+	|<t_sin: "sin">{  } : DEFAULT
+	|<t_tan: "tan">{  } : DEFAULT
+	|<t_degrees: "degrees">{  } : DEFAULT
+	|<t_radians: "radians">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_array_method
+	<t_insert: "insert">{  } : DEFAULT
+	|<t_insert_at: "insert_at">{  } : DEFAULT
+	|<t_remove: "remove">{  } : DEFAULT
+	|<t_remove_at: "remove_at">{  } : DEFAULT
+	|<t_extend: "extend">{  } : DEFAULT
+	|<t_clear: "clear">{  } : DEFAULT
+	|<t_copy: "copy">{  } : DEFAULT
+	|<t_count: "count">{  } : DEFAULT
+	|<t_reverse: "reverse">{  } : DEFAULT
+	|<t_sort: "sort">{  } : DEFAULT
+	|<t_shuffle: "shuffle">{  } : DEFAULT
+	|<t_peek: "peek">{  } : DEFAULT
+	|<t_pop: "pop">{  } : DEFAULT
+	|<t_push: "push">{  } : DEFAULT
+	|<t_enqueue: "enqueue">{  } : DEFAULT
+	|<t_dequeue: "dequeue">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_set_method
+	<t_add: "add">{  } : DEFAULT
+	|<t_discard: "discard">{  } : DEFAULT
+	|<t_get: "get">{  } : DEFAULT
+	|<t_difference: "difference">{  } : DEFAULT
+	|<t_difference_symmetric: "difference_symmetric">{  } : DEFAULT
+	|<t_intersection: "intersection">{  } : DEFAULT
+	|<t_union: "union">{  } : DEFAULT
+	|<t_cartesian_product: "cartesian_product">{  } : DEFAULT
+	|<t_complement: "complement">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_values
+	<t_var_name: (["a"-"z","A"-"Z"]|"_")(["a"-"z","A"-"Z"]|"_"|["0"-"9"])*>{  } : DEFAULT
+	|<t_char_value: ("\""(~["\n"])"\"")|("'"(~["\n"])"'")>{  } : DEFAULT
+	|<t_string_value: ("\""(~["\n"])*"\"")|("'"(~["\n"])*"'")>{  } : DEFAULT
+	|<t_int_value: ("-"|"+")?(["0"-"9"])+>{  } : DEFAULT
+	|<t_float_value: <t_int_value>"."(["0"-"9"])+>{  } : DEFAULT
+	|<t_snot_value: <t_int_value>("."(["0"-"9"])+)?(("e"|"E")("-"|"+")?(["0"-"9"])+)?>{  } : DEFAULT
+	|<t_complex_value: (<t_int_value>("."(["0"-"9"])+)?)(<t_int_value>("."(["0"-"9"])+)?)"i">{  } : DEFAULT
+}
+SKIP:
+{
+	//TOKEN's name: t_comments
+	<t_comment: "#"(~[">","\n"])*>{  } : DEFAULT
+	|<t_comment_multiline: "#>"(~[])*"<#">{  } : DEFAULT
+}
