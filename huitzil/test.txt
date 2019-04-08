@@ -35,8 +35,10 @@ number = 12 + 4i
 text = 'a'
 text = 'hello'
 
+var number #undefined
+
 #strict mode for more  professional, complex software
-var number_int_null = int()
+var number_int_null = int() #null
 var number_int = int(12)
 var number_complex = float(12.5)
 var number_snot = snot(12.5e20)
