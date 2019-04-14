@@ -1,32 +1,29 @@
-# previus token type
-previus_token = "no_previus_token"
+tokens = dict()
 
-def BuildToken(words):
-    global previus_token
-    # if previus token is different to current token, build new token
-    if(previus_token != words[0]):
-        msj = "TOKEN:\n{\n\t//TOKEN's name: " + words[0] + "\n\t<t_" + words[1] + ": " + words[2] + "- ->{ System.out.println(\"t_" + words[1] + "\" + image); } : DEFAULT"
-    else:
-        # print new regex
-        msj = "\t|<t_" + words[1] + ": " + words[2] + "- ->{ System.out.println(\"t_" + words[1] + ": \" + image); } : DEFAULT"
-    print(msj)
-    previus_token = words[0]
+def BuildTokens():
+    global tokens
+    for token, regex in tokens.items():
+        msj = "TOKEN:\n{{\n\t//TOKEN's name: {0}\n\t<{0}: {1}>{{  }} : DEFAULT\n}}".format(token,regex)
+        print(msj)
     return
 
-
 def MatchFile(path):
-    global previus_token
+    global tokens
     # open the file, read row by row
     f = open(path, "r")
     for row in f:
         # for each row in the file
         # split the row in words
         words = row.split(",")
-        # if previus token is different to current token, close previus token
-        if(previus_token != words[0]):
-            print("}")
-        # for each row, build token
-        BuildToken(words)
+        #if the token is not created, add it
+        if words[0] in tokens:
+            regex = "|\"{0}\"".format(words[2][:-1])
+            tokens[words[0]] = tokens[words[0]] + regex
+            
+        else:
+            regex = "\"{0}\"".format(words[2][:-1])
+            tokens[words[0]] = regex
+    BuildTokens()
     return
 
 go = True
