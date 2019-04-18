@@ -63,20 +63,4 @@ public class Huitzil {
             System.out.println(exception.getMessage());
         }
     }
-
-    // public static String getKind(Token token) {
-    //     Field[] fields = LexicalConstants.class.getDeclaredFields();
-    //     for (Field field : fields) {
-    //         if (field.getType() == int.class) {
-    //             try {
-    //                 if (token.kind == field.getInt(null)) {
-    //                     return field.getName();
-    //                 }
-    //             } catch (Exception exception) {
-
-    //             }
-    //         }
-    //     }
-    //     return "";
-    // }
 }

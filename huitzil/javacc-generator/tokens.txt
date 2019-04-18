@@ -1,12 +1,22 @@
 TOKEN:
 {
 	//TOKEN's name: t_conditional
-	<t_conditional: "if"|"elif"|"unless">{  } : DEFAULT
+	<t_conditional: "if"|"unless">{  } : DEFAULT
 }
 TOKEN:
 {
-	//TOKEN's name: t_parenthesis_group
-	<t_parenthesis_group: "("|")">{  } : DEFAULT
+	//TOKEN's name: t_elif
+	<t_elif: "elif">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_parenthesis_group_open
+	<t_parenthesis_group_open: "(">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_parenthesis_group_close
+	<t_parenthesis_group_close: ")">{  } : DEFAULT
 }
 TOKEN:
 {
@@ -91,7 +101,7 @@ TOKEN:
 TOKEN:
 {
 	//TOKEN's name: t_comma
-	<t_comma: ",">{  } : DEFAULT
+	<t_comma: "">{  } : DEFAULT
 }
 TOKEN:
 {
@@ -150,13 +160,23 @@ TOKEN:
 }
 TOKEN:
 {
-	//TOKEN's name: t_array
-	<t_array: "["|"]">{  } : DEFAULT
+	//TOKEN's name: t_array_open
+	<t_array_open: "[">{  } : DEFAULT
 }
 TOKEN:
 {
-	//TOKEN's name: t_set
-	<t_set: "{"|"}">{  } : DEFAULT
+	//TOKEN's name: t_array_close
+	<t_array_close: "]">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_set_open
+	<t_set_open: "{">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_set_close
+	<t_set_close: "}">{  } : DEFAULT
 }
 TOKEN:
 {
@@ -206,7 +226,7 @@ TOKEN:
 TOKEN:
 {
 	//TOKEN's name: t_data_security
-	<t_data_security: "public"|"pribate"|"protected"|"internal">{  } : DEFAULT
+	<t_data_security: "public"|"private"|"protected"|"internal">{  } : DEFAULT
 }
 TOKEN:
 {
@@ -251,7 +271,7 @@ TOKEN:
 TOKEN:
 {
 	//TOKEN's name: t_escape_character
-	<t_escape_character: "\\"|"\\b"|"\\f"|"\\n"|"\\r"|"\\t"|"\\v"|"\\'"|"\\"""|"\\\\">{  } : DEFAULT
+	<t_escape_character: "\\"|"\\b"|"\\f"|"\\n"|"\\r"|"\\t"|"\\v"|"\\'"|"\\""|"\\\\">{  } : DEFAULT
 }
 TOKEN:
 {
@@ -271,7 +291,7 @@ TOKEN:
 TOKEN:
 {
 	//TOKEN's name: t_number_method
-	<t_number_method: "abs"|"cail"|"cmp"|"exp"|"fabs"|"floor"|"log"|"log10"|"max"|"min"|"modf"|"pow"|"round"|"sqrt"|"random_range"|"choice"|"random_generate">{  } : DEFAULT
+	<t_number_method: "absolute"|"ceil"|"compare"|"exponential"|"f_absolute"|"floor"|"log"|"log10"|"max"|"min"|"modf"|"pow"|"round"|"sqrt"|"random_range"|"choice"|"random_generate">{  } : DEFAULT
 }
 TOKEN:
 {
@@ -290,11 +310,46 @@ TOKEN:
 }
 TOKEN:
 {
-	//TOKEN's name: t_values
-	<t_values: "([""a"-"z"|"("\""(~["\n"])"\"")|("'"(~["\n"])"'")"|"("\""(~["\n"])*"\"")|("'"(~["\n"])*"'")"|"("-"|"+")?(["0"-"9"])+"|"<t_int_value>"."(["0"-"9"])+"|"<t_int_value>("."(["0"-"9"])+)?(("e"|"E")("-"|"+")?(["0"-"9"])+)?"|"(<t_int_value>("."(["0"-"9"])+)?)(<t_int_value>("."(["0"-"9"])+)?)"i"">{  } : DEFAULT
+	//TOKEN's name: t_var_name
+	<t_var_name: "(["a"-"z">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_char_value
+	<t_char_value: "("\""(~["\n"])"\"")|("'"(~["\n"])"'")">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_string_value
+	<t_string_value: "("\""(~["\n"])*"\"")|("'"(~["\n"])*"'")">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_int_value
+	<t_int_value: "("-"|"+")?(["0"-"9"])+">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_float_value
+	<t_float_value: "<t_int_value>"."(["0"-"9"])+">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_snot_value
+	<t_snot_value: "<t_int_value>("."(["0"-"9"])+)?(("e"|"E")("-"|"+")?(["0"-"9"])+)?">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_complex_value
+	<t_complex_value: "(<t_int_value>("."(["0"-"9"])+)?)(<t_int_value>("."(["0"-"9"])+)?)"i"">{  } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_comment
-	<t_comment: ""#"(~[">"|""#>"(~[])*"<#">{  } : DEFAULT
+	<t_comment: ""#"(~[">">{  } : DEFAULT
+}
+TOKEN:
+{
+	//TOKEN's name: t_comment_multiline
+	<t_comment_multiline: ""#>"(~[])*"<#">{  } : DEFAULT
 }

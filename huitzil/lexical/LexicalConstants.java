@@ -12,395 +12,147 @@ public interface LexicalConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int t_if = 5;
+  int t_conditional = 5;
   /** RegularExpression Id. */
   int t_elif = 6;
   /** RegularExpression Id. */
-  int t_unless = 7;
+  int t_parenthesis_group_open = 7;
   /** RegularExpression Id. */
-  int t_parenthesis_open = 8;
+  int t_parenthesis_group_close = 8;
   /** RegularExpression Id. */
-  int t_parenthesis_close = 9;
+  int t_colons = 9;
   /** RegularExpression Id. */
-  int t_colons = 10;
+  int t_else = 10;
   /** RegularExpression Id. */
-  int t_else = 11;
+  int t_bool = 11;
   /** RegularExpression Id. */
-  int t_true = 12;
+  int t_asiggnment = 12;
   /** RegularExpression Id. */
-  int t_false = 13;
+  int t_comparison_operator = 13;
   /** RegularExpression Id. */
-  int t_assignment = 14;
+  int t_logic_operator = 14;
   /** RegularExpression Id. */
-  int t_equal = 15;
+  int t_switch = 15;
   /** RegularExpression Id. */
-  int t_equal_exactly = 16;
+  int t_case = 16;
   /** RegularExpression Id. */
-  int t_less_than = 17;
+  int t_default = 17;
   /** RegularExpression Id. */
-  int t_less_equal = 18;
+  int t_break = 18;
   /** RegularExpression Id. */
-  int t_greater_than = 19;
+  int t_next = 19;
   /** RegularExpression Id. */
-  int t_greater_equal = 20;
+  int t_not_yet = 20;
   /** RegularExpression Id. */
-  int t_not_equal = 21;
+  int t_again = 21;
   /** RegularExpression Id. */
-  int t_not_equal_exactly = 22;
+  int t_loop = 22;
   /** RegularExpression Id. */
-  int t_and_logic = 23;
+  int t_do = 23;
   /** RegularExpression Id. */
-  int t_or_logic = 24;
+  int t_range = 24;
   /** RegularExpression Id. */
-  int t_not_logic = 25;
+  int t_comma = 25;
   /** RegularExpression Id. */
-  int t_switch = 26;
+  int t_output = 26;
   /** RegularExpression Id. */
-  int t_case = 27;
+  int t_text = 27;
   /** RegularExpression Id. */
-  int t_default = 28;
+  int t_input = 28;
   /** RegularExpression Id. */
-  int t_break = 29;
+  int t_aritmethic_operator = 29;
   /** RegularExpression Id. */
-  int t_next = 30;
+  int t_aritmethic_operator_assignment = 30;
   /** RegularExpression Id. */
-  int t_not_yet = 31;
+  int t_bitwise_operator = 31;
   /** RegularExpression Id. */
-  int t_again = 32;
+  int t_bitwise_operator_assignment = 32;
   /** RegularExpression Id. */
-  int t_for = 33;
+  int t_type_operator = 33;
   /** RegularExpression Id. */
-  int t_while = 34;
+  int t_data_type = 34;
   /** RegularExpression Id. */
-  int t_until = 35;
+  int t_membership_operator = 35;
   /** RegularExpression Id. */
-  int t_iterator = 36;
+  int t_identity_operator = 36;
   /** RegularExpression Id. */
-  int t_foreach = 37;
+  int t_array_open = 37;
   /** RegularExpression Id. */
-  int t_do = 38;
+  int t_array_close = 38;
   /** RegularExpression Id. */
-  int t_range = 39;
+  int t_set_open = 39;
   /** RegularExpression Id. */
-  int t_comma = 40;
+  int t_set_close = 40;
   /** RegularExpression Id. */
-  int t_output = 41;
+  int t_try = 41;
   /** RegularExpression Id. */
-  int t_text = 42;
+  int t_catch = 42;
   /** RegularExpression Id. */
-  int t_input = 43;
+  int t_finally = 43;
   /** RegularExpression Id. */
-  int t_plus = 44;
+  int t_throw = 44;
   /** RegularExpression Id. */
-  int t_minus = 45;
+  int t_null = 45;
   /** RegularExpression Id. */
-  int t_division = 46;
+  int t_undefined = 46;
   /** RegularExpression Id. */
-  int t_division_floor = 47;
+  int t_method = 47;
   /** RegularExpression Id. */
-  int t_multiplication = 48;
+  int t_lambda = 48;
   /** RegularExpression Id. */
-  int t_pow = 49;
+  int t_return = 49;
   /** RegularExpression Id. */
-  int t_module = 50;
+  int t_data_security = 50;
   /** RegularExpression Id. */
-  int t_plus_assignment = 51;
+  int t_class = 51;
   /** RegularExpression Id. */
-  int t_minus_assignment = 52;
+  int t_class_construct = 52;
   /** RegularExpression Id. */
-  int t_multiplication_assignment = 53;
+  int t_class_destruct = 53;
   /** RegularExpression Id. */
-  int t_division_assignment = 54;
+  int t_attribute = 54;
   /** RegularExpression Id. */
-  int t_division_floor_assignment = 55;
+  int t_my = 55;
   /** RegularExpression Id. */
-  int t_pow_assignment = 56;
+  int t_import = 56;
   /** RegularExpression Id. */
-  int t_module_assignment = 57;
+  int t_strict = 57;
   /** RegularExpression Id. */
-  int t_and_binary = 58;
+  int t_var = 58;
   /** RegularExpression Id. */
-  int t_or_binary = 59;
+  int t_escape_character = 59;
   /** RegularExpression Id. */
-  int t_xor_binary = 60;
+  int t_string_method = 60;
   /** RegularExpression Id. */
-  int t_complement_binary = 61;
+  int t_dot = 61;
   /** RegularExpression Id. */
-  int t_left_shift_binary = 62;
+  int t_dot_assignment = 62;
   /** RegularExpression Id. */
-  int t_right_shift_binary = 63;
+  int t_number_method = 63;
   /** RegularExpression Id. */
-  int t_and_binary_assignment = 64;
+  int t_trigonometric_method = 64;
   /** RegularExpression Id. */
-  int t_or_binary_assignment = 65;
+  int t_array_method = 65;
   /** RegularExpression Id. */
-  int t_xor_binary_assignment = 66;
+  int t_set_method = 66;
   /** RegularExpression Id. */
-  int t_complement_binary_assignment = 67;
+  int t_var_name = 67;
   /** RegularExpression Id. */
-  int t_left_shift_binary_assignment = 68;
+  int t_char_value = 68;
   /** RegularExpression Id. */
-  int t_right_shift_binary_assignment = 69;
+  int t_string_value = 69;
   /** RegularExpression Id. */
-  int t_type_of = 70;
+  int t_int_value = 70;
   /** RegularExpression Id. */
-  int t_instance_of = 71;
+  int t_float_value = 71;
   /** RegularExpression Id. */
-  int t_convert = 72;
+  int t_snot_value = 72;
   /** RegularExpression Id. */
-  int t_boolean = 73;
+  int t_complex_value = 73;
   /** RegularExpression Id. */
-  int t_string = 74;
+  int t_comment = 74;
   /** RegularExpression Id. */
-  int t_int = 75;
-  /** RegularExpression Id. */
-  int t_float = 76;
-  /** RegularExpression Id. */
-  int t_snot = 77;
-  /** RegularExpression Id. */
-  int t_complex = 78;
-  /** RegularExpression Id. */
-  int t_list = 79;
-  /** RegularExpression Id. */
-  int t_tuple = 80;
-  /** RegularExpression Id. */
-  int t_queue = 81;
-  /** RegularExpression Id. */
-  int t_stack = 82;
-  /** RegularExpression Id. */
-  int t_set = 83;
-  /** RegularExpression Id. */
-  int t_dictionary = 84;
-  /** RegularExpression Id. */
-  int t_char = 85;
-  /** RegularExpression Id. */
-  int t_datetime = 86;
-  /** RegularExpression Id. */
-  int t_timestamp = 87;
-  /** RegularExpression Id. */
-  int t_file = 88;
-  /** RegularExpression Id. */
-  int t_random = 89;
-  /** RegularExpression Id. */
-  int t_in = 90;
-  /** RegularExpression Id. */
-  int t_not_in = 91;
-  /** RegularExpression Id. */
-  int t_is = 92;
-  /** RegularExpression Id. */
-  int t_not_is = 93;
-  /** RegularExpression Id. */
-  int t_square_bracket_open = 94;
-  /** RegularExpression Id. */
-  int t_square_bracket_close = 95;
-  /** RegularExpression Id. */
-  int t_curly_open = 96;
-  /** RegularExpression Id. */
-  int t_curly_close = 97;
-  /** RegularExpression Id. */
-  int t_try = 98;
-  /** RegularExpression Id. */
-  int t_catch = 99;
-  /** RegularExpression Id. */
-  int t_finally = 100;
-  /** RegularExpression Id. */
-  int t_throw = 101;
-  /** RegularExpression Id. */
-  int t_null = 102;
-  /** RegularExpression Id. */
-  int t_undefined = 103;
-  /** RegularExpression Id. */
-  int t_method = 104;
-  /** RegularExpression Id. */
-  int t_lambda = 105;
-  /** RegularExpression Id. */
-  int t_return = 106;
-  /** RegularExpression Id. */
-  int t_public = 107;
-  /** RegularExpression Id. */
-  int t_private = 108;
-  /** RegularExpression Id. */
-  int t_protected = 109;
-  /** RegularExpression Id. */
-  int t_internal = 110;
-  /** RegularExpression Id. */
-  int t_class = 111;
-  /** RegularExpression Id. */
-  int t_construct = 112;
-  /** RegularExpression Id. */
-  int t_destruct = 113;
-  /** RegularExpression Id. */
-  int t_attribute = 114;
-  /** RegularExpression Id. */
-  int t_my = 115;
-  /** RegularExpression Id. */
-  int t_import = 116;
-  /** RegularExpression Id. */
-  int t_strict = 117;
-  /** RegularExpression Id. */
-  int t_var = 118;
-  /** RegularExpression Id. */
-  int t_escape_character = 119;
-  /** RegularExpression Id. */
-  int t_backspace = 120;
-  /** RegularExpression Id. */
-  int t_form_feed = 121;
-  /** RegularExpression Id. */
-  int t_new_line = 122;
-  /** RegularExpression Id. */
-  int t_carriage_return = 123;
-  /** RegularExpression Id. */
-  int t_horizontal_tab = 124;
-  /** RegularExpression Id. */
-  int t_vertical_tab = 125;
-  /** RegularExpression Id. */
-  int t_single_quote = 126;
-  /** RegularExpression Id. */
-  int t_doble_quote = 127;
-  /** RegularExpression Id. */
-  int t_backslash = 128;
-  /** RegularExpression Id. */
-  int t_split = 129;
-  /** RegularExpression Id. */
-  int t_replace = 130;
-  /** RegularExpression Id. */
-  int t_flip = 131;
-  /** RegularExpression Id. */
-  int t_lower = 132;
-  /** RegularExpression Id. */
-  int t_upper = 133;
-  /** RegularExpression Id. */
-  int t_trim = 134;
-  /** RegularExpression Id. */
-  int t_lenght = 135;
-  /** RegularExpression Id. */
-  int t_capitalize = 136;
-  /** RegularExpression Id. */
-  int t_index = 137;
-  /** RegularExpression Id. */
-  int t_concatenate = 138;
-  /** RegularExpression Id. */
-  int t_dot = 139;
-  /** RegularExpression Id. */
-  int t_dot_assignment = 140;
-  /** RegularExpression Id. */
-  int t_abs = 141;
-  /** RegularExpression Id. */
-  int t_ceil = 142;
-  /** RegularExpression Id. */
-  int t_cmp = 143;
-  /** RegularExpression Id. */
-  int t_exp = 144;
-  /** RegularExpression Id. */
-  int t_fabs = 145;
-  /** RegularExpression Id. */
-  int t_floor = 146;
-  /** RegularExpression Id. */
-  int t_log = 147;
-  /** RegularExpression Id. */
-  int t_log10 = 148;
-  /** RegularExpression Id. */
-  int t_max = 149;
-  /** RegularExpression Id. */
-  int t_min = 150;
-  /** RegularExpression Id. */
-  int t_modf = 151;
-  /** RegularExpression Id. */
-  int t_pow_prefix = 152;
-  /** RegularExpression Id. */
-  int t_round = 153;
-  /** RegularExpression Id. */
-  int t_sqrt = 154;
-  /** RegularExpression Id. */
-  int t_random_range = 155;
-  /** RegularExpression Id. */
-  int t_choice = 156;
-  /** RegularExpression Id. */
-  int t_random_generate = 157;
-  /** RegularExpression Id. */
-  int t_acos = 158;
-  /** RegularExpression Id. */
-  int t_asin = 159;
-  /** RegularExpression Id. */
-  int t_atan = 160;
-  /** RegularExpression Id. */
-  int t_cos = 161;
-  /** RegularExpression Id. */
-  int t_sin = 162;
-  /** RegularExpression Id. */
-  int t_tan = 163;
-  /** RegularExpression Id. */
-  int t_degrees = 164;
-  /** RegularExpression Id. */
-  int t_radians = 165;
-  /** RegularExpression Id. */
-  int t_insert = 166;
-  /** RegularExpression Id. */
-  int t_insert_at = 167;
-  /** RegularExpression Id. */
-  int t_remove = 168;
-  /** RegularExpression Id. */
-  int t_remove_at = 169;
-  /** RegularExpression Id. */
-  int t_extend = 170;
-  /** RegularExpression Id. */
-  int t_clear = 171;
-  /** RegularExpression Id. */
-  int t_copy = 172;
-  /** RegularExpression Id. */
-  int t_count = 173;
-  /** RegularExpression Id. */
-  int t_reverse = 174;
-  /** RegularExpression Id. */
-  int t_sort = 175;
-  /** RegularExpression Id. */
-  int t_shuffle = 176;
-  /** RegularExpression Id. */
-  int t_peek = 177;
-  /** RegularExpression Id. */
-  int t_pop = 178;
-  /** RegularExpression Id. */
-  int t_push = 179;
-  /** RegularExpression Id. */
-  int t_enqueue = 180;
-  /** RegularExpression Id. */
-  int t_dequeue = 181;
-  /** RegularExpression Id. */
-  int t_add = 182;
-  /** RegularExpression Id. */
-  int t_discard = 183;
-  /** RegularExpression Id. */
-  int t_get = 184;
-  /** RegularExpression Id. */
-  int t_difference = 185;
-  /** RegularExpression Id. */
-  int t_difference_symmetric = 186;
-  /** RegularExpression Id. */
-  int t_intersection = 187;
-  /** RegularExpression Id. */
-  int t_union = 188;
-  /** RegularExpression Id. */
-  int t_cartesian_product = 189;
-  /** RegularExpression Id. */
-  int t_complement = 190;
-  /** RegularExpression Id. */
-  int t_var_name = 191;
-  /** RegularExpression Id. */
-  int t_char_value = 192;
-  /** RegularExpression Id. */
-  int t_string_value = 193;
-  /** RegularExpression Id. */
-  int t_int_value = 194;
-  /** RegularExpression Id. */
-  int t_float_value = 195;
-  /** RegularExpression Id. */
-  int t_snot_value = 196;
-  /** RegularExpression Id. */
-  int t_complex_value = 197;
-  /** RegularExpression Id. */
-  int t_comment = 198;
-  /** RegularExpression Id. */
-  int t_comment_multiline = 199;
+  int t_comment_multiline = 75;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -412,27 +164,16 @@ public interface LexicalConstants {
     "\"\\t\"",
     "\"\\n\"",
     "\"\\r\"",
-    "\"if\"",
+    "<t_conditional>",
     "\"elif\"",
-    "\"unless\"",
     "\"(\"",
     "\")\"",
     "\":\"",
     "\"else\"",
-    "\"true\"",
-    "\"false\"",
+    "<t_bool>",
     "\"=\"",
-    "<t_equal>",
-    "<t_equal_exactly>",
-    "<t_less_than>",
-    "<t_less_equal>",
-    "<t_greater_than>",
-    "<t_greater_equal>",
-    "<t_not_equal>",
-    "<t_not_equal_exactly>",
-    "<t_and_logic>",
-    "<t_or_logic>",
-    "<t_not_logic>",
+    "<t_comparison_operator>",
+    "<t_logic_operator>",
     "\"switch\"",
     "\"case\"",
     "\"default\"",
@@ -440,67 +181,21 @@ public interface LexicalConstants {
     "\"next\"",
     "\"not_yet\"",
     "\"again\"",
-    "\"for\"",
-    "\"while\"",
-    "\"until\"",
-    "\"iterator\"",
-    "\"foreach\"",
+    "<t_loop>",
     "\"do\"",
     "<t_range>",
     "\",\"",
     "\"output\"",
     "<t_text>",
     "\"input\"",
-    "\"+\"",
-    "\"-\"",
-    "\"/\"",
-    "\"//\"",
-    "\"*\"",
-    "\"**\"",
-    "\"%\"",
-    "\"+=\"",
-    "\"-=\"",
-    "\"*=\"",
-    "\"/=\"",
-    "\"//=\"",
-    "\"**=\"",
-    "\"%=\"",
-    "\"&\"",
-    "\"|\"",
-    "\"^\"",
-    "\"~\"",
-    "\"<<\"",
-    "\">>\"",
-    "\"&=\"",
-    "\"|=\"",
-    "\"^=\"",
-    "\"~=\"",
-    "\"<<=\"",
-    "\">>=\"",
-    "\"type_of\"",
-    "\"instance_of\"",
-    "\"convert\"",
-    "\"boolean\"",
-    "\"string\"",
-    "\"int\"",
-    "\"float\"",
-    "\"snot\"",
-    "\"complex\"",
-    "\"list\"",
-    "\"tuple\"",
-    "\"queue\"",
-    "\"stack\"",
-    "\"set\"",
-    "\"dictionary\"",
-    "\"char\"",
-    "\"datetime\"",
-    "\"timestamp\"",
-    "\"file\"",
-    "\"random\"",
-    "\"in\"",
-    "\"not_in\"",
-    "\"is\"",
-    "\"not_is\"",
+    "<t_aritmethic_operator>",
+    "<t_aritmethic_operator_assignment>",
+    "<t_bitwise_operator>",
+    "<t_bitwise_operator_assignment>",
+    "<t_type_operator>",
+    "<t_data_type>",
+    "<t_membership_operator>",
+    "<t_identity_operator>",
     "\"[\"",
     "\"]\"",
     "\"{\"",
@@ -514,10 +209,7 @@ public interface LexicalConstants {
     "\"method\"",
     "<t_lambda>",
     "\"return\"",
-    "\"public\"",
-    "\"private\"",
-    "\"protected\"",
-    "\"internal\"",
+    "<t_data_security>",
     "\"class\"",
     "\"construct\"",
     "\"destruct\"",
@@ -526,78 +218,14 @@ public interface LexicalConstants {
     "\"import\"",
     "\"strict\"",
     "\"var\"",
-    "\"\\\\\"",
-    "\"\\\\b\"",
-    "\"\\\\f\"",
-    "\"\\\\n\"",
-    "\"\\\\r\"",
-    "\"\\\\t\"",
-    "\"\\\\v\"",
-    "\"\\\\\\\'\"",
-    "\"\\\\\\\"\"",
-    "\"\\\\\\\\\"",
-    "\"split\"",
-    "\"replace\"",
-    "\"flip\"",
-    "\"lower\"",
-    "\"upper\"",
-    "\"trim\"",
-    "\"lenght\"",
-    "\"capitalize\"",
-    "\"index\"",
-    "\"concatenate\"",
+    "<t_escape_character>",
+    "<t_string_method>",
     "\".\"",
     "\".=\"",
-    "\"abs\"",
-    "\"ceil\"",
-    "\"cmp\"",
-    "\"exp\"",
-    "\"fabs\"",
-    "\"floor\"",
-    "\"log\"",
-    "\"log10\"",
-    "\"max\"",
-    "\"min\"",
-    "\"modf\"",
-    "\"pow\"",
-    "\"round\"",
-    "\"sqrt\"",
-    "\"random_range\"",
-    "\"choice\"",
-    "\"random_generate\"",
-    "\"acos\"",
-    "\"asin\"",
-    "\"atan\"",
-    "\"cos\"",
-    "\"sin\"",
-    "\"tan\"",
-    "\"degrees\"",
-    "\"radians\"",
-    "\"insert\"",
-    "\"insert_at\"",
-    "\"remove\"",
-    "\"remove_at\"",
-    "\"extend\"",
-    "\"clear\"",
-    "\"copy\"",
-    "\"count\"",
-    "\"reverse\"",
-    "\"sort\"",
-    "\"shuffle\"",
-    "\"peek\"",
-    "\"pop\"",
-    "\"push\"",
-    "\"enqueue\"",
-    "\"dequeue\"",
-    "\"add\"",
-    "\"discard\"",
-    "\"get\"",
-    "\"difference\"",
-    "\"difference_symmetric\"",
-    "\"intersection\"",
-    "\"union\"",
-    "\"cartesian_product\"",
-    "\"complement\"",
+    "<t_number_method>",
+    "<t_trigonometric_method>",
+    "<t_array_method>",
+    "<t_set_method>",
     "<t_var_name>",
     "<t_char_value>",
     "<t_string_value>",
