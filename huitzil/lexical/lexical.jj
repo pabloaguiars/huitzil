@@ -363,12 +363,12 @@ TOKEN:
 	//TOKEN's name: t_complex_value
 	<t_complex_value: (<t_int_value>("."(["0"-"9"])+)?)(<t_int_value>("."(["0"-"9"])+)?)"i">{  } : DEFAULT
 }
-TOKEN:
+SKIP:
 {
 	//TOKEN's name: t_comment
 	<t_comment: "#"(~[">"])>{  } : DEFAULT
 }
-TOKEN:
+SKIP:
 {
 	//TOKEN's name: t_comment_multiline
 	<t_comment_multiline: "#>"(~[])*"<#">{  } : DEFAULT
