@@ -12,147 +12,151 @@ public interface LexicalConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int t_conditional = 5;
+  int t_comment_multiline = 5;
   /** RegularExpression Id. */
-  int t_elif = 6;
+  int t_comment = 6;
   /** RegularExpression Id. */
-  int t_parenthesis_group_open = 7;
+  int t_conditional = 7;
   /** RegularExpression Id. */
-  int t_parenthesis_group_close = 8;
+  int t_elif = 8;
   /** RegularExpression Id. */
-  int t_colons = 9;
+  int t_parenthesis_group_open = 9;
   /** RegularExpression Id. */
-  int t_else = 10;
+  int t_parenthesis_group_close = 10;
   /** RegularExpression Id. */
-  int t_bool = 11;
+  int t_colons = 11;
   /** RegularExpression Id. */
-  int t_asiggnment = 12;
+  int t_else = 12;
   /** RegularExpression Id. */
-  int t_comparison_operator = 13;
+  int t_bool = 13;
   /** RegularExpression Id. */
-  int t_logic_operator = 14;
+  int t_assignment = 14;
   /** RegularExpression Id. */
-  int t_switch = 15;
+  int t_comparison_operator = 15;
   /** RegularExpression Id. */
-  int t_case = 16;
+  int t_logic_operator = 16;
   /** RegularExpression Id. */
-  int t_default = 17;
+  int t_switch = 17;
   /** RegularExpression Id. */
-  int t_break = 18;
+  int t_case = 18;
   /** RegularExpression Id. */
-  int t_next = 19;
+  int t_default = 19;
   /** RegularExpression Id. */
-  int t_not_yet = 20;
+  int t_break = 20;
   /** RegularExpression Id. */
-  int t_again = 21;
+  int t_next = 21;
   /** RegularExpression Id. */
-  int t_loop = 22;
+  int t_not_yet = 22;
   /** RegularExpression Id. */
-  int t_do = 23;
+  int t_again = 23;
   /** RegularExpression Id. */
-  int t_range = 24;
+  int t_for = 24;
   /** RegularExpression Id. */
-  int t_comma = 25;
+  int t_while = 25;
   /** RegularExpression Id. */
-  int t_output = 26;
+  int t_until = 26;
   /** RegularExpression Id. */
-  int t_text = 27;
+  int t_do = 27;
   /** RegularExpression Id. */
-  int t_input = 28;
+  int t_range = 28;
   /** RegularExpression Id. */
-  int t_aritmethic_operator = 29;
+  int t_comma = 29;
   /** RegularExpression Id. */
-  int t_aritmethic_operator_assignment = 30;
+  int t_output = 30;
   /** RegularExpression Id. */
-  int t_bitwise_operator = 31;
+  int t_text = 31;
   /** RegularExpression Id. */
-  int t_bitwise_operator_assignment = 32;
+  int t_input = 32;
   /** RegularExpression Id. */
-  int t_type_operator = 33;
+  int t_aritmethic_operator = 33;
   /** RegularExpression Id. */
-  int t_data_type = 34;
+  int t_aritmethic_operator_assignment = 34;
   /** RegularExpression Id. */
-  int t_membership_operator = 35;
+  int t_bitwise_operator = 35;
   /** RegularExpression Id. */
-  int t_identity_operator = 36;
+  int t_bitwise_operator_assignment = 36;
   /** RegularExpression Id. */
-  int t_array_open = 37;
+  int t_type_operator = 37;
   /** RegularExpression Id. */
-  int t_array_close = 38;
+  int t_data_type = 38;
   /** RegularExpression Id. */
-  int t_set_open = 39;
+  int t_membership_operator = 39;
   /** RegularExpression Id. */
-  int t_set_close = 40;
+  int t_identity_operator = 40;
   /** RegularExpression Id. */
-  int t_try = 41;
+  int t_array_open = 41;
   /** RegularExpression Id. */
-  int t_catch = 42;
+  int t_array_close = 42;
   /** RegularExpression Id. */
-  int t_finally = 43;
+  int t_set_open = 43;
   /** RegularExpression Id. */
-  int t_throw = 44;
+  int t_set_close = 44;
   /** RegularExpression Id. */
-  int t_null = 45;
+  int t_try = 45;
   /** RegularExpression Id. */
-  int t_undefined = 46;
+  int t_catch = 46;
   /** RegularExpression Id. */
-  int t_method = 47;
+  int t_finally = 47;
   /** RegularExpression Id. */
-  int t_lambda = 48;
+  int t_throw = 48;
   /** RegularExpression Id. */
-  int t_return = 49;
+  int t_null = 49;
   /** RegularExpression Id. */
-  int t_data_security = 50;
+  int t_undefined = 50;
   /** RegularExpression Id. */
-  int t_class = 51;
+  int t_method = 51;
   /** RegularExpression Id. */
-  int t_class_construct = 52;
+  int t_lambda = 52;
   /** RegularExpression Id. */
-  int t_class_destruct = 53;
+  int t_return = 53;
   /** RegularExpression Id. */
-  int t_attribute = 54;
+  int t_data_security = 54;
   /** RegularExpression Id. */
-  int t_my = 55;
+  int t_class = 55;
   /** RegularExpression Id. */
-  int t_import = 56;
+  int t_class_construct = 56;
   /** RegularExpression Id. */
-  int t_strict = 57;
+  int t_class_destruct = 57;
   /** RegularExpression Id. */
-  int t_var = 58;
+  int t_attribute = 58;
   /** RegularExpression Id. */
-  int t_escape_character = 59;
+  int t_my = 59;
   /** RegularExpression Id. */
-  int t_string_method = 60;
+  int t_import = 60;
   /** RegularExpression Id. */
-  int t_dot = 61;
+  int t_strict = 61;
   /** RegularExpression Id. */
-  int t_dot_assignment = 62;
+  int t_var = 62;
   /** RegularExpression Id. */
-  int t_number_method = 63;
+  int t_escape_character = 63;
   /** RegularExpression Id. */
-  int t_trigonometric_method = 64;
+  int t_string_method = 64;
   /** RegularExpression Id. */
-  int t_array_method = 65;
+  int t_dot = 65;
   /** RegularExpression Id. */
-  int t_set_method = 66;
+  int t_dot_assignment = 66;
   /** RegularExpression Id. */
-  int t_var_name = 67;
+  int t_number_method = 67;
   /** RegularExpression Id. */
-  int t_char_value = 68;
+  int t_trigonometric_method = 68;
   /** RegularExpression Id. */
-  int t_string_value = 69;
+  int t_array_method = 69;
   /** RegularExpression Id. */
-  int t_int_value = 70;
+  int t_set_method = 70;
   /** RegularExpression Id. */
-  int t_float_value = 71;
+  int t_var_name = 71;
   /** RegularExpression Id. */
-  int t_snot_value = 72;
+  int t_char_value = 72;
   /** RegularExpression Id. */
-  int t_complex_value = 73;
+  int t_string_value = 73;
   /** RegularExpression Id. */
-  int t_comment = 74;
+  int t_int_value = 74;
   /** RegularExpression Id. */
-  int t_comment_multiline = 75;
+  int t_float_value = 75;
+  /** RegularExpression Id. */
+  int t_snot_value = 76;
+  /** RegularExpression Id. */
+  int t_complex_value = 77;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -164,6 +168,8 @@ public interface LexicalConstants {
     "\"\\t\"",
     "\"\\n\"",
     "\"\\r\"",
+    "<t_comment_multiline>",
+    "<t_comment>",
     "<t_conditional>",
     "\"elif\"",
     "\"(\"",
@@ -181,7 +187,9 @@ public interface LexicalConstants {
     "\"next\"",
     "\"not_yet\"",
     "\"again\"",
-    "<t_loop>",
+    "\"for\"",
+    "\"while\"",
+    "\"until\"",
     "\"do\"",
     "<t_range>",
     "\",\"",
@@ -233,8 +241,6 @@ public interface LexicalConstants {
     "<t_float_value>",
     "<t_snot_value>",
     "<t_complex_value>",
-    "<t_comment>",
-    "<t_comment_multiline>",
   };
 
 }
