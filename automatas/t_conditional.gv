@@ -1,0 +1,28 @@
+digraph finite_state_machine {
+	rankdir=LR;
+	size="10,10"
+
+	node [ shape = doublecircle, label = "0", fontsize  = 14] n0;
+
+	node [ shape = circle, label = "1", fontsize  = 12] n1;
+	node [ shape = circle, label = "2", fontsize  = 12] n2;
+	node [ shape = circle, label = "3", fontsize  = 12] n3;
+	node [ shape = circle, label = "4", fontsize  = 12] n4;
+	node [ shape = circle, label = "5", fontsize  = 12] n5;
+	node [ shape = circle, label = "6", fontsize  = 12] n6;
+	node [ shape = circle, label = "7", fontsize  = 12] n7;
+
+	node [ shape = doublecircle, label = "8", fontsize  = 14] n8;
+
+	node [shape = point ]; qi
+	qi -> n0;
+
+	n0 -> n1 [ label = "i" ];
+	n1 -> n2 [ label = "f" ];
+	n0 -> n3 [ label = "u" ];
+	n3 -> n4 [ label = "n" ];
+	n4 -> n5 [ label = "l" ];
+	n5 -> n6 [ label = "e" ];
+	n6 -> n7 [ label = "s" ];
+	n7 -> n8 [ label = "s" ];
+}

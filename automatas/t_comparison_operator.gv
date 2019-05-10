@@ -1,0 +1,58 @@
+digraph finite_state_machine {
+	rankdir=LR;
+	size="10,10"
+
+	node [ shape = doublecircle, label = "0", fontsize  = 14] n0;
+
+	node [ shape = circle, label = "1", fontsize  = 12] n1;
+	node [ shape = circle, label = "2", fontsize  = 12] n2;
+	node [ shape = circle, label = "3", fontsize  = 12] n3;
+	node [ shape = circle, label = "4", fontsize  = 12] n4;
+	node [ shape = circle, label = "5", fontsize  = 12] n5;
+	node [ shape = circle, label = "6", fontsize  = 12] n6;
+	node [ shape = circle, label = "7", fontsize  = 12] n7;
+	node [ shape = circle, label = "8", fontsize  = 12] n8;
+	node [ shape = circle, label = "9", fontsize  = 12] n9;
+	node [ shape = circle, label = "10", fontsize  = 12] n10;
+	node [ shape = circle, label = "11", fontsize  = 12] n11;
+	node [ shape = circle, label = "12", fontsize  = 12] n12;
+	node [ shape = circle, label = "13", fontsize  = 12] n13;
+	node [ shape = circle, label = "14", fontsize  = 12] n14;
+	node [ shape = circle, label = "15", fontsize  = 12] n15;
+	node [ shape = circle, label = "16", fontsize  = 12] n16;
+	node [ shape = circle, label = "17", fontsize  = 12] n17;
+	node [ shape = circle, label = "18", fontsize  = 12] n18;
+	node [ shape = circle, label = "19", fontsize  = 12] n19;
+	node [ shape = circle, label = "20", fontsize  = 12] n20;
+	node [ shape = circle, label = "21", fontsize  = 12] n21;
+	node [ shape = circle, label = "22", fontsize  = 12] n22;
+
+	node [ shape = doublecircle, label = "23", fontsize  = 14] n23;
+
+	node [shape = point ]; qi
+	qi -> n0;
+
+	n0 -> n1 [ label = "=" ];
+	n1 -> n2 [ label = "=" ];
+	n2 -> n3 [ label = "=" ];
+	n0 -> n4 [ label = "i" ];
+	n4 -> n5 [ label = "d" ];
+	n0 -> n6 [ label = "<" ];
+	n6 -> n7 [ label = "=" ];
+	n0 -> n8 [ label = "l" ];
+	n8 -> n9 [ label = "t" ];
+	n8 -> n10 [ label = "e" ];
+	n0 -> n11 [ label = ">" ];
+	n11 -> n12 [ label = "=" ];
+	n0 -> n13 [ label = "g" ];
+	n13 -> n14 [ label = "t" ];
+	n13 -> n15 [ label = "e" ];
+	n0 -> n16 [ label = "!" ];
+	n16 -> n17 [ label = "=" ];
+	n17 -> n18 [ label = "=" ];
+	n0 -> n19 [ label = "n" ];
+	n19 -> n20 [ label = "e" ];
+	n19 -> n21 [ label = "i" ];
+	n0 -> n22 [ label = "e" ];
+	n22 -> n23 [ label = "q" ];
+}

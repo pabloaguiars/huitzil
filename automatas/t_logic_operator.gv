@@ -1,0 +1,38 @@
+digraph finite_state_machine {
+	rankdir=LR;
+	size="10,10"
+
+	node [ shape = doublecircle, label = "0", fontsize  = 14] n0;
+
+	node [ shape = circle, label = "1", fontsize  = 12] n1;
+	node [ shape = circle, label = "2", fontsize  = 12] n2;
+	node [ shape = circle, label = "3", fontsize  = 12] n3;
+	node [ shape = circle, label = "4", fontsize  = 12] n4;
+	node [ shape = circle, label = "5", fontsize  = 12] n5;
+	node [ shape = circle, label = "6", fontsize  = 12] n6;
+	node [ shape = circle, label = "7", fontsize  = 12] n7;
+	node [ shape = circle, label = "8", fontsize  = 12] n8;
+	node [ shape = circle, label = "9", fontsize  = 12] n9;
+	node [ shape = circle, label = "10", fontsize  = 12] n10;
+	node [ shape = circle, label = "11", fontsize  = 12] n11;
+	node [ shape = circle, label = "12", fontsize  = 12] n12;
+
+	node [ shape = doublecircle, label = "13", fontsize  = 14] n13;
+
+	node [shape = point ]; qi
+	qi -> n0;
+
+	n0 -> n1 [ label = "&" ];
+	n1 -> n2 [ label = "&" ];
+	n0 -> n3 [ label = "o" ];
+	n3 -> n4 [ label = "r" ];
+	n0 -> n5 [ label = "!" ];
+	n0 -> n6 [ label = "n" ];
+	n6 -> n7 [ label = "o" ];
+	n7 -> n8 [ label = "t" ];
+	n0 -> n9 [ label = "a" ];
+	n9 -> n10 [ label = "n" ];
+	n10 -> n11 [ label = "d" ];
+	n0 -> n12 [ label = "|" ];
+	n12 -> n13 [ label = "|" ];
+}

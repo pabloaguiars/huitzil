@@ -1,0 +1,66 @@
+digraph finite_state_machine {
+	rankdir=LR;
+	size="10,10"
+
+	node [ shape = doublecircle, label = "0", fontsize  = 14] n0;
+
+	node [ shape = circle, label = "1", fontsize  = 12] n1;
+	node [ shape = circle, label = "2", fontsize  = 12] n2;
+	node [ shape = circle, label = "3", fontsize  = 12] n3;
+	node [ shape = circle, label = "4", fontsize  = 12] n4;
+	node [ shape = circle, label = "5", fontsize  = 12] n5;
+	node [ shape = circle, label = "6", fontsize  = 12] n6;
+	node [ shape = circle, label = "7", fontsize  = 12] n7;
+	node [ shape = circle, label = "8", fontsize  = 12] n8;
+	node [ shape = circle, label = "9", fontsize  = 12] n9;
+	node [ shape = circle, label = "10", fontsize  = 12] n10;
+	node [ shape = circle, label = "11", fontsize  = 12] n11;
+	node [ shape = circle, label = "12", fontsize  = 12] n12;
+	node [ shape = circle, label = "13", fontsize  = 12] n13;
+	node [ shape = circle, label = "14", fontsize  = 12] n14;
+	node [ shape = circle, label = "15", fontsize  = 12] n15;
+	node [ shape = circle, label = "16", fontsize  = 12] n16;
+	node [ shape = circle, label = "17", fontsize  = 12] n17;
+	node [ shape = circle, label = "18", fontsize  = 12] n18;
+	node [ shape = circle, label = "19", fontsize  = 12] n19;
+	node [ shape = circle, label = "20", fontsize  = 12] n20;
+	node [ shape = circle, label = "21", fontsize  = 12] n21;
+	node [ shape = circle, label = "22", fontsize  = 12] n22;
+	node [ shape = circle, label = "23", fontsize  = 12] n23;
+	node [ shape = circle, label = "24", fontsize  = 12] n24;
+	node [ shape = circle, label = "25", fontsize  = 12] n25;
+	node [ shape = circle, label = "26", fontsize  = 12] n26;
+
+	node [ shape = doublecircle, label = "27", fontsize  = 14] n27;
+
+	node [shape = point ]; qi
+	qi -> n0;
+
+	n0 -> n1 [ label = "p" ];
+	n1 -> n2 [ label = "r" ];
+	n2 -> n3 [ label = "i" ];
+	n3 -> n4 [ label = "v" ];
+	n4 -> n5 [ label = "a" ];
+	n5 -> n6 [ label = "t" ];
+	n6 -> n7 [ label = "e" ];
+	n2 -> n8 [ label = "o" ];
+	n8 -> n9 [ label = "t" ];
+	n9 -> n10 [ label = "e" ];
+	n10 -> n11 [ label = "c" ];
+	n11 -> n12 [ label = "t" ];
+	n12 -> n13 [ label = "e" ];
+	n13 -> n14 [ label = "d" ];
+	n1 -> n15 [ label = "u" ];
+	n15 -> n16 [ label = "b" ];
+	n16 -> n17 [ label = "l" ];
+	n17 -> n18 [ label = "i" ];
+	n18 -> n19 [ label = "c" ];
+	n0 -> n20 [ label = "i" ];
+	n20 -> n21 [ label = "n" ];
+	n21 -> n22 [ label = "t" ];
+	n22 -> n23 [ label = "e" ];
+	n23 -> n24 [ label = "r" ];
+	n24 -> n25 [ label = "n" ];
+	n25 -> n26 [ label = "a" ];
+	n26 -> n27 [ label = "l" ];
+}
