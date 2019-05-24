@@ -36,127 +36,137 @@ public interface ParserConstants {
   /** RegularExpression Id. */
   int t_logic_operator = 16;
   /** RegularExpression Id. */
-  int t_switch = 17;
+  int t_logic_operator_not = 17;
   /** RegularExpression Id. */
-  int t_case = 18;
+  int t_switch = 18;
   /** RegularExpression Id. */
-  int t_default = 19;
+  int t_case = 19;
   /** RegularExpression Id. */
-  int t_break = 20;
+  int t_default = 20;
   /** RegularExpression Id. */
-  int t_next = 21;
+  int t_break = 21;
   /** RegularExpression Id. */
-  int t_not_yet = 22;
+  int t_next = 22;
   /** RegularExpression Id. */
-  int t_again = 23;
+  int t_not_yet = 23;
   /** RegularExpression Id. */
-  int t_for = 24;
+  int t_again = 24;
   /** RegularExpression Id. */
-  int t_while = 25;
+  int t_for = 25;
   /** RegularExpression Id. */
-  int t_until = 26;
+  int t_while = 26;
   /** RegularExpression Id. */
-  int t_do = 27;
+  int t_until = 27;
   /** RegularExpression Id. */
-  int t_range = 28;
+  int t_do = 28;
   /** RegularExpression Id. */
-  int t_comma = 29;
+  int t_range = 29;
   /** RegularExpression Id. */
-  int t_output = 30;
+  int t_comma = 30;
   /** RegularExpression Id. */
-  int t_text = 31;
+  int t_output = 31;
   /** RegularExpression Id. */
-  int t_input = 32;
+  int t_text = 32;
   /** RegularExpression Id. */
-  int t_aritmethic_operator = 33;
+  int t_input = 33;
   /** RegularExpression Id. */
-  int t_aritmethic_operator_assignment = 34;
+  int t_aritmethic_operator = 34;
   /** RegularExpression Id. */
-  int t_bitwise_operator = 35;
+  int t_aritmethic_operator_assignment = 35;
   /** RegularExpression Id. */
-  int t_bitwise_operator_assignment = 36;
+  int t_bitwise_operator = 36;
   /** RegularExpression Id. */
-  int t_type_operator = 37;
+  int t_bitwise_operator_assignment = 37;
   /** RegularExpression Id. */
-  int t_data_type = 38;
+  int t_type_operator = 38;
   /** RegularExpression Id. */
-  int t_membership_operator = 39;
+  int t_convert = 39;
   /** RegularExpression Id. */
-  int t_identity_operator = 40;
+  int t_data_type = 40;
   /** RegularExpression Id. */
-  int t_array_open = 41;
+  int t_membership_operator = 41;
   /** RegularExpression Id. */
-  int t_array_close = 42;
+  int t_identity_operator = 42;
   /** RegularExpression Id. */
-  int t_set_open = 43;
+  int t_array_open = 43;
   /** RegularExpression Id. */
-  int t_set_close = 44;
+  int t_array_close = 44;
   /** RegularExpression Id. */
-  int t_try = 45;
+  int t_set_open = 45;
   /** RegularExpression Id. */
-  int t_catch = 46;
+  int t_set_close = 46;
   /** RegularExpression Id. */
-  int t_finally = 47;
+  int t_try = 47;
   /** RegularExpression Id. */
-  int t_throw = 48;
+  int t_catch = 48;
   /** RegularExpression Id. */
-  int t_null = 49;
+  int t_finally = 49;
   /** RegularExpression Id. */
-  int t_undefined = 50;
+  int t_throw = 50;
   /** RegularExpression Id. */
-  int t_method = 51;
+  int t_exception = 51;
   /** RegularExpression Id. */
-  int t_lambda = 52;
+  int t_null = 52;
   /** RegularExpression Id. */
-  int t_return = 53;
+  int t_undefined = 53;
   /** RegularExpression Id. */
-  int t_data_security = 54;
+  int t_method = 54;
   /** RegularExpression Id. */
-  int t_class = 55;
+  int t_global = 55;
   /** RegularExpression Id. */
-  int t_class_construct = 56;
+  int t_lambda = 56;
   /** RegularExpression Id. */
-  int t_class_destruct = 57;
+  int t_return = 57;
   /** RegularExpression Id. */
-  int t_attribute = 58;
+  int t_object_security = 58;
   /** RegularExpression Id. */
-  int t_my = 59;
+  int t_class = 59;
   /** RegularExpression Id. */
-  int t_import = 60;
+  int t_class_construct = 60;
   /** RegularExpression Id. */
-  int t_strict = 61;
+  int t_class_destruct = 61;
   /** RegularExpression Id. */
-  int t_var = 62;
+  int t_attribute = 62;
   /** RegularExpression Id. */
-  int t_escape_character = 63;
+  int t_my = 63;
   /** RegularExpression Id. */
-  int t_string_method = 64;
+  int t_new = 64;
   /** RegularExpression Id. */
-  int t_dot = 65;
+  int t_import = 65;
   /** RegularExpression Id. */
-  int t_dot_assignment = 66;
+  int t_strict = 66;
   /** RegularExpression Id. */
-  int t_number_method = 67;
+  int t_var = 67;
   /** RegularExpression Id. */
-  int t_trigonometric_method = 68;
+  int t_escape_character = 68;
   /** RegularExpression Id. */
-  int t_array_method = 69;
+  int t_string_method = 69;
   /** RegularExpression Id. */
-  int t_set_method = 70;
+  int t_dot = 70;
   /** RegularExpression Id. */
-  int t_var_name = 71;
+  int t_dot_assignment = 71;
   /** RegularExpression Id. */
-  int t_char_value = 72;
+  int t_number_method = 72;
   /** RegularExpression Id. */
-  int t_string_value = 73;
+  int t_trigonometric_method = 73;
   /** RegularExpression Id. */
-  int t_int_value = 74;
+  int t_array_method = 74;
   /** RegularExpression Id. */
-  int t_float_value = 75;
+  int t_set_method = 75;
   /** RegularExpression Id. */
-  int t_snot_value = 76;
+  int t_object_name = 76;
   /** RegularExpression Id. */
-  int t_complex_value = 77;
+  int t_char_value = 77;
+  /** RegularExpression Id. */
+  int t_string_value = 78;
+  /** RegularExpression Id. */
+  int t_int_value = 79;
+  /** RegularExpression Id. */
+  int t_float_value = 80;
+  /** RegularExpression Id. */
+  int t_snot_value = 81;
+  /** RegularExpression Id. */
+  int t_complex_value = 82;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -180,6 +190,7 @@ public interface ParserConstants {
     "\"=\"",
     "<t_comparison_operator>",
     "<t_logic_operator>",
+    "<t_logic_operator_not>",
     "\"switch\"",
     "\"case\"",
     "\"default\"",
@@ -201,6 +212,7 @@ public interface ParserConstants {
     "<t_bitwise_operator>",
     "<t_bitwise_operator_assignment>",
     "<t_type_operator>",
+    "\"convert\"",
     "<t_data_type>",
     "<t_membership_operator>",
     "<t_identity_operator>",
@@ -212,17 +224,20 @@ public interface ParserConstants {
     "\"catch\"",
     "\"finally\"",
     "\"throw\"",
+    "\"Exception\"",
     "\"null\"",
     "\"undefined\"",
     "\"method\"",
+    "\"global\"",
     "<t_lambda>",
     "\"return\"",
-    "<t_data_security>",
+    "<t_object_security>",
     "\"class\"",
     "\"construct\"",
     "\"destruct\"",
     "\"attribute\"",
     "\"my\"",
+    "\"new\"",
     "\"import\"",
     "\"strict\"",
     "\"var\"",
@@ -234,7 +249,7 @@ public interface ParserConstants {
     "<t_trigonometric_method>",
     "<t_array_method>",
     "<t_set_method>",
-    "<t_var_name>",
+    "<t_object_name>",
     "<t_char_value>",
     "<t_string_value>",
     "<t_int_value>",

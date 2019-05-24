@@ -4,8 +4,14 @@ PARSER_BEGIN(Parser)
 
 //package for all files in the parser/ directory
 package parser;
+//import Maps and HashMap libreries
+import java.util.Map;
+import java.util.HashMap;
 //public class
-public class Parser { }
+public class Parser { 
+        public static Map<String, Integer> table = new HashMap<String, Integer>();
+        public static Integer tableIndex = 0;
+}
 
 PARSER_END(Parser)
 
@@ -73,7 +79,8 @@ TOKEN:
 TOKEN:
 {
 	//TOKEN's name: t_logic_operator
-	<t_logic_operator: "&&"|"and"|"||"|"or"|"!"|"not">{  } : DEFAULT
+	<t_logic_operator: "&&"|"and"|"||"|"or">{  } : DEFAULT
+        | <t_logic_operator_not: "!"|"not">{  } : DEFAULT
 }
 TOKEN:
 {
@@ -107,8 +114,8 @@ TOKEN:
 }
 TOKEN:
 {
-	//TOKEN's name: t_again
 	<t_again: "again">{  } : DEFAULT
+	//TOKEN's name: t_again
 }
 TOKEN:
 {
@@ -171,7 +178,8 @@ TOKEN:
 TOKEN:
 {
 	//TOKEN's name: t_type_operator
-	<t_type_operator: "type_of"|"instance_of"|"convert">{  } : DEFAULT
+	<t_type_operator: "type_of"|"instance_of">{  } : DEFAULT
+        | <t_convert: "convert">{  } : DEFAULT
 }
 TOKEN:
 {
@@ -230,6 +238,11 @@ TOKEN:
 }
 TOKEN:
 {
+	//TOKEN's name: t_exception
+	<t_exception: "Exception">{  } : DEFAULT
+}
+TOKEN:
+{
 	//TOKEN's name: t_null
 	<t_null: "null">{  } : DEFAULT
 }
@@ -245,6 +258,11 @@ TOKEN:
 }
 TOKEN:
 {
+	//TOKEN's name: t_global
+	<t_global: "global">{  } : DEFAULT
+}
+TOKEN:
+{
 	//TOKEN's name: t_lambda
 	<t_lambda: "=>"|"lambda">{  } : DEFAULT
 }
@@ -255,8 +273,8 @@ TOKEN:
 }
 TOKEN:
 {
-	//TOKEN's name: t_data_security
-	<t_data_security: "public"|"private"|"protected"|"internal">{  } : DEFAULT
+	//TOKEN's name: t_object_security
+	<t_object_security: "public"|"private"|"protected"|"internal">{  } : DEFAULT
 }
 TOKEN:
 {
@@ -282,6 +300,11 @@ TOKEN:
 {
 	//TOKEN's name: t_my
 	<t_my: "my">{  } : DEFAULT
+}
+TOKEN:
+{
+        //TOKEN's name: t_new
+        <t_new: "new">{  } : DEFAULT
 }
 TOKEN:
 {
@@ -340,8 +363,12 @@ TOKEN:
 }
 TOKEN:
 {
-	//TOKEN's name: t_var_name
-	<t_var_name: (["a"-"z","A"-"Z"]|"_")(["a"-"z","A"-"Z"]|"_"|["0"-"9"])*>{  } : DEFAULT
+	//TOKEN's name: t_object_name
+	<t_object_name: (["a"-"z","A"-"Z"]|"_")(["a"-"z","A"-"Z"]|"_"|["0"-"9"])*>{ 
+                 if (!Parser.table.containsKey(image.toString())) {
+                        Parser.table.put(image.toString(), Parser.tableIndex++);
+                }
+        } : DEFAULT
 }
 TOKEN:
 {
@@ -371,7 +398,7 @@ TOKEN:
 TOKEN:
 {
 	//TOKEN's name: t_complex_value
-	<t_complex_value: (<t_int_value>("."(["0"-"9"])+)?)(<t_int_value>("."(["0"-"9"])+)?)"i">{  } : DEFAULT
+	<t_complex_value: (<t_int_value>("."(["0"-"9"])+)?)("-"|"+")?(<t_int_value>("."(["0"-"9"])+)?)"i">{  } : DEFAULT
 }
 
 void g_program():
@@ -380,17 +407,15 @@ void g_program():
         (g_strict())? (g_import())? g_body()
         {
                 // TODO: implement AST
-                System.out.println("Program"); 
         }
 }
 
 void g_body():
 { }
 {
-        (g_instruction() | g_method()) g_more_body()
+        g_instruction() g_more_body()
         {
                 // TODO: implement AST
-                System.out.println("Body");
         }
 }
 
@@ -400,42 +425,85 @@ void g_more_body():
         (g_body())?
         {
                 // TODO: implement AST
-                System.out.println("More body");
         }
 }
 
 void g_instruction():
 { }
 {
-        (g_declaration() | g_conditional() | g_while() | g_for() | g_try() | g_output() | g_switch() | g_not_yet())
+        (g_declaration() | g_assignment() | g_conditional() | g_while() | g_until() | g_for() | g_do_while() | g_try() | g_output() | g_switch() | g_throw_exception() | g_next() | g_again() | g_not_yet())
         {
                 // TODO: implement AST
-                System.out.println("Instruction");
         }
 }
 
 void g_declaration():
 { }
 {
-        <t_var> <t_var_name> <t_assignment> (g_declaration_single() | g_declaration_complete())
-        {
-                // TODO: implement AST 
-        }
-}
-
-void g_declaration_single():
-{ }
-{
-        (g_value() | <t_null> | g_input()) g_more_vars()
+        (g_object_security())? (g_declaration_var() | g_declaration_method() | g_declaration_class() | g_instance_class())
         {
                 // TODO: implement AST
         }
 }
 
-void g_declaration_complete():
+void g_object_security():
 { }
 {
-        <t_data_type> <t_parenthesis_group_open> (g_value() | <t_null> | g_input()) <t_parenthesis_group_close>
+        <t_object_security>
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_declaration_var():
+{ }
+{
+        <t_var> <t_object_name> <t_assignment> (g_declaration_var_single() | g_declaration_var_strict())
+        {
+                // TODO: implement AST 
+        }
+}
+
+void g_declaration_var_single():
+{ }
+{
+        g_value() g_declaration_more_vars_single()
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_declaration_var_strict():
+{ }
+{
+        <t_data_type> <t_parenthesis_group_open> g_value() <t_parenthesis_group_close>
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_instance_class():
+{ }
+{
+        <t_new> <t_object_name> <t_assignment> <t_new> <t_object_name> <t_parenthesis_group_open> g_pass_parameter() <t_parenthesis_group_close>
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_pass_parameter():
+{ }
+{
+        g_value() g_pass_more_parameters()
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_pass_more_parameters():
+{ }
+{
+        (<t_comma> g_value())?
         {
                 // TODO: implement AST
         }
@@ -445,7 +513,7 @@ void g_declaration_complete():
 void g_value():
 { }
 {
-        g_text_value() | g_number_value() | <t_var_name> | <t_bool>
+        g_text_value() | g_number_value() (g_expression())? | (<t_object_name> (g_expression())?) | <t_bool> | <t_null> | g_input()
         {
                 // TODO: implement AST
         }
@@ -469,10 +537,79 @@ void g_number_value():
         }
 }
 
+void g_declaration_more_vars_single():
+{ }
+{
+        (<t_comma> <t_object_name> <t_assignment> g_declaration_var_single())?
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_assignment():
+{}
+{
+        ((<t_my> <t_dot> <t_object_name>) | <t_object_name>) ((<t_assignment> (g_value() | g_declaration_var_strict())) | (g_operation_assignment()) | (g_method_call()) | (<t_lambda> g_lambda()))
+        {
+                //TODO: implement AST
+        }
+}
+
+void g_var():
+{ }
+{
+        <t_object_name> g_more_vars()
+}
+
 void g_more_vars():
 { }
 {
-        (<t_comma> <t_var_name> <t_assignment> (g_declaration_single() | g_declaration_complete()))?
+        (<t_comma> <t_object_name> g_var())?
+        {
+                // TODO: implment AST
+        }
+}
+
+void g_lambda():
+{ }
+{
+        g_argument() <t_colons> g_expression()
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_argument():
+{ }
+{
+        <t_object_name> g_more_arguments()
+        {
+                // TODO: implmement AST
+        }
+}
+
+void g_more_arguments():
+{ }
+{
+        (<t_comma> <t_object_name> g_argument())?
+        {
+                // TODO: implmement AST
+        }
+}
+
+void g_expression():
+{ }
+{
+        (g_aritmethic_operation() | g_bitwise_operation()) g_more_expression()
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_more_expression():
+{ }
+{
+        (g_expression())?
         {
                 // TODO: implement AST
         }
@@ -508,7 +645,7 @@ void g_strict():
 void g_conditional():
 { }
 {
-        <t_conditional> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close> (g_elif())? (g_else())? (g_finally())?
+        <t_conditional> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close> (g_elif())? (g_else())?
         {
                 // TODO: implement AST
         }
@@ -580,7 +717,16 @@ void g_more_elifs():
 void g_while():
 { }
 {
-        <t_while> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close> (g_finally())?
+        <t_while> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_until():
+{ }
+{
+        <t_until> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -598,7 +744,25 @@ void g_for():
 void g_range():
 { }
 {
-        <t_var_name> <t_membership_operator> <t_range> <t_parenthesis_group_open> g_number_value() <t_comma> g_number_value() <t_parenthesis_group_close>
+        <t_object_name> <t_membership_operator> <t_range> <t_parenthesis_group_open> g_number_value() <t_comma> g_number_value() <t_parenthesis_group_close>
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_next():
+{ } 
+{
+        <t_next>
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_again():
+{ } 
+{
+        <t_again>
         {
                 // TODO: implement AST
         }
@@ -616,13 +780,11 @@ void g_try():
 void g_catch():
 { }
 {
-        <t_catch> <t_parenthesis_group_open> <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close> g_more_catchs()
+        <t_catch> <t_parenthesis_group_open> ((<t_exception> <t_object_name>) | (g_instance_class()) | g_condition()) <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close> g_more_catchs()
         {
                 // TODO: implement AST
         }
 }
-
-//add exception
 
 void g_more_catchs():
 { }
@@ -637,6 +799,15 @@ void g_finally():
 { }
 {
         <t_finally> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_throw_exception():
+{ }
+{
+        <t_throw> <t_new> <t_object_name> <t_parenthesis_group_open> g_text_value() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -672,7 +843,7 @@ void g_input():
 void g_output():
 { }
 {
-        <t_output> <t_parenthesis_group_open> g_text_value() <t_parenthesis_group_close>
+        <t_output> <t_parenthesis_group_open> g_value() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -681,7 +852,7 @@ void g_output():
 void g_switch():
 { }
 {
-        <t_switch> <t_parenthesis_group_open> <t_var_name> <t_parenthesis_group_close> <t_parenthesis_group_open> g_case() g_default() <t_parenthesis_group_close>
+        <t_switch> <t_parenthesis_group_open> <t_object_name> <t_parenthesis_group_close> <t_parenthesis_group_open> g_case() g_default() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -690,9 +861,18 @@ void g_switch():
 void g_case():
 { }
 {
-        <t_case> <t_parenthesis_group_open> g_value() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close> g_more_cases()
+        <t_case> <t_parenthesis_group_open> g_value() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() g_break() <t_parenthesis_group_close> g_more_cases()
         {
                 // TODO: implement AST
+        }
+}
+
+void g_break():
+{ }
+{
+        <t_break>
+        {
+                // TODO: implment AST
         }
 }
 
@@ -714,10 +894,19 @@ void g_default():
         }
 }
 
-void g_method():
+void g_declaration_method():
 { }
 {
-        <t_method> <t_parenthesis_group_open> g_parameter() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() g_return() <t_parenthesis_group_close>
+        <t_method> <t_object_name> <t_parenthesis_group_open> (g_parameter())? <t_parenthesis_group_close> <t_parenthesis_group_open> (g_global())? g_instruction() (g_return())? <t_parenthesis_group_close>
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_global():
+{ }
+{
+        <t_global> (<t_dot> g_assignment() | g_var())
         {
                 // TODO: implement AST
         }
@@ -726,7 +915,7 @@ void g_method():
 void g_parameter():
 { }
 {
-        <t_var_name> (<t_assignment> g_value())? g_more_parameters()
+        <t_var> <t_object_name> (<t_assignment> g_value())? g_more_parameters()
         {
                 // TODO: implement AST
         }
@@ -744,7 +933,127 @@ void g_more_parameters():
 void g_return():
 { }
 {
-        <t_return> g_value()
+        <t_return> (g_value())?
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_method_call():
+{ }
+{
+        <t_parenthesis_group_open> g_pass_parameter() <t_parenthesis_group_close>
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_declaration_class():
+{ }
+{
+        <t_class> <t_object_name> (<t_colons> <t_object_name>)? <t_parenthesis_group_open> (g_not_yet() | ((g_attributes())? g_class_methods())) <t_parenthesis_group_close>
+        {
+                // TODO: implement AST
+        } 
+}
+
+void g_attributes():
+{ }
+{
+        (g_object_security())? <t_attribute> <t_object_name> <t_assignment> (g_declaration_var_single() | g_declaration_var_strict())
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_class_methods():
+{ }
+{
+        (g_construct())? g_declaration_method() g_class_more_methods() (g_destruct())?
+}
+
+void g_class_more_methods():
+{ }
+{
+        (g_declaration_method())?
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_construct():
+{ }
+{
+        <t_class_construct> <t_parenthesis_group_open> (g_parameter())? <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_destruct():
+{ }
+{
+        <t_class_destruct> <t_parenthesis_group_open> (g_parameter())? <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_operation_assignment():
+{ }
+{
+        (g_aritmethic_operation_assignment() | g_bitwise_operation_assignment())
+}
+
+void g_aritmethic_operation():
+{ }
+{
+        <t_aritmethic_operator> (g_number_value() | <t_object_name>)
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_aritmethic_operation_assignment():
+{ }
+{
+        <t_aritmethic_operator_assignment> g_number_value() g_aritmethic_more_numbers()
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_aritmethic_more_numbers():
+{ }
+{
+        (<t_aritmethic_operator> (g_number_value() | <t_object_name>) g_aritmethic_operation())?
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_bitwise_operation():
+{ }
+{
+        <t_bitwise_operator> (g_number_value() | <t_object_name>)
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_bitwise_operation_assignment():
+{ }
+{
+        <t_bitwise_operator_assignment> (g_number_value() | <t_object_name>) g_bitwise_more_numbers()
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_bitwise_more_numbers():
+{ }
+{
+        (<t_bitwise_operator> (g_number_value() | <t_object_name>) g_bitwise_operation())?
         {
                 // TODO: implement AST
         }
