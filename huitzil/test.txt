@@ -1,0 +1,171 @@
+#strict compilation
+strict
+
+#import packages
+import "packagepath"
+
+#comment
+
+#> multiline
+comment
+multiline
+comment<#
+
+#declarations
+#strict
+var x = int(12)
+#assignment
+x = 'a' 
+# multiple simple declaration
+var a = 15, b = 'a', c = 12.5, d = 12E-12 
+# aritmethic operations
+a = 15 + 15 * 25
+# aritmethic operation with assignment
+a += 25
+a = "text"
+#concatenate
+a .= " it's"."works".x
+
+#lambda
+c => a,b : a ** 2 + b ** 2
+
+#if
+if(!(a < 20))(
+    # not_yet
+    not_yet
+)
+
+#if
+#comparisson
+if (a < 20)(
+    #> multiline
+    comment <#
+    not_yet
+) elif (a > 20)(
+    #elif
+    not_yet
+) else (
+    #else
+    not_yet
+)
+
+#unless
+#logic operation
+unless((25 < 5) and (30 < 4))(
+    if(true == true)(
+        not_yet
+    )
+)
+
+#define method
+method print_name(var name)(
+    #access to global variables
+    global a
+    a = 'x'
+    #output, print
+    output(name)
+    #return
+    return a
+)
+
+#call method
+print_name("name")
+
+#for
+for(x in range(5,10))(
+    if(true == true)(
+        #next to value in range
+        next
+    ) elif(true == true)(
+        #restart for loop
+        again
+    ) else (
+        #throw exception
+        throw new exception("throw catch Exception")
+    )
+)
+
+#while
+while(true == true)(
+    not_yet
+)
+
+#until
+until(true == true)(
+    not_yet
+)
+
+#do while
+do(
+    not_yet
+) while(true == false)
+
+# define class
+class test (
+    #attributes
+    public attribute color = ""
+
+    #construct
+    construct(var h = 1) (
+        not_yet
+    )
+    
+    #class method
+    method change_color(var color = "black")(
+        #access to class attributes
+        my.color = color
+    )
+
+    method print(var name, var last_name, var alias = "")(
+        var full_name = string("")
+        full_name .= name." ".last_name
+        output(full_name)
+    )
+
+    #destruct
+    destruct()(
+        not_yet
+    )
+)
+
+# instance class
+new t = new test(3)
+
+#try catch finally
+try (
+    not_yet
+) catch (Exception e) (
+    not_yet
+) catch (a == 5)(
+    not_yet
+) finally (
+    not_yet
+)
+
+#bitweise operations
+var result_bitwise = 0
+result_bitwise = 15 | 15 ^ 10
+
+#switch
+switch(a)(
+    #case
+    case(5)(
+        if(a < 15)(
+            var b = int(0)
+            while(!(a < b))(
+                not_yet
+            )
+        )
+        #break
+        break
+    )
+    case(15)(
+        not_yet
+        break
+    )
+    #default
+    default(
+        not_yet
+        break
+    )
+)

@@ -25,9 +25,9 @@ public class Huitzil {
             p.g_program();
 
             System.out.println("\nParser successfully");
-            System.out.print("\nSymbols table: ");
+            //System.out.print("\nSymbols table: ");
             // print symbol table
-            System.out.println(Parser.table);
+            //System.out.println(Parser.table);
 
 
             // // symbol table
@@ -75,7 +75,7 @@ public class Huitzil {
             // if something went wrong... print the exception
             System.out.println("\nCan't parse the file. Something went wrong: ");
             System.out.println(exception.getMessage());
-            exception.printStackTrace();
+            //exception.printStackTrace();
         } 
     }
 }

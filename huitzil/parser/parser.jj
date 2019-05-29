@@ -513,7 +513,7 @@ void g_pass_more_parameters():
 void g_value():
 { }
 {
-        g_text_value() | g_number_value() (g_expression())? | (<t_object_name> (g_expression())?) | <t_bool> | <t_null> | g_input()
+        g_text_value() | (g_number_value() (g_expression())?) | (<t_object_name> (g_expression())?) | <t_bool> | <t_null> | g_input()
         {
                 // TODO: implement AST
         }
@@ -551,8 +551,32 @@ void g_assignment():
 {
         ((<t_my> <t_dot> <t_object_name>) | <t_object_name>) ((<t_assignment> (g_value() | g_declaration_var_strict())) | (g_operation_assignment()) | (g_method_call()) | (<t_lambda> g_lambda()))
         {
-                //TODO: implement AST
+                // TODO: implement AST
         }
+}
+
+void g_dot_operation():
+{ }
+{
+        <t_dot> (g_concanate() | g_object_method())
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_concanate():
+{ }
+{
+        (g_text_value() | <t_object_name>) g_dot_more_text()
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_object_method():
+{ } 
+{
+        (<t_number_method> | <t_string_method> | <t_set_method> | <t_array_method> | <t_trigonometric_method>) <t_parenthesis_group_open> <t_parenthesis_group_close>
 }
 
 void g_var():
@@ -573,7 +597,7 @@ void g_more_vars():
 void g_lambda():
 { }
 {
-        g_argument() <t_colons> g_expression()
+        g_argument() <t_colons> <t_object_name> g_expression()
         {
                 // TODO: implement AST
         }
@@ -591,7 +615,7 @@ void g_argument():
 void g_more_arguments():
 { }
 {
-        (<t_comma> <t_object_name> g_argument())?
+        (<t_comma> g_argument())?
         {
                 // TODO: implmement AST
         }
@@ -645,7 +669,7 @@ void g_strict():
 void g_conditional():
 { }
 {
-        <t_conditional> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close> (g_elif())? (g_else())?
+        <t_conditional> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close> (g_elif())? (g_else())?
         {
                 // TODO: implement AST
         }
@@ -672,7 +696,7 @@ void g_comparison():
 void g_logic_expression():
 { }
 {
-        <t_parenthesis_group_open> g_comparison() <t_parenthesis_group_close> <t_logic_operator> <t_parenthesis_group_open> g_comparison() <t_parenthesis_group_close> g_more_logic_expressions()
+        (<t_parenthesis_group_open> g_comparison() <t_parenthesis_group_close> <t_logic_operator> <t_parenthesis_group_open> g_comparison() <t_parenthesis_group_close> g_more_logic_expressions()) | (<t_logic_operator_not> <t_parenthesis_group_open> (g_comparison() | g_logic_expression()) <t_parenthesis_group_close>)
         {
                 // TODO: implement AST
         }
@@ -690,7 +714,7 @@ void g_more_logic_expressions():
 void g_else():
 { }
 {
-        <t_else> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        <t_else> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -699,7 +723,7 @@ void g_else():
 void g_elif():
 { }
 {
-        <t_elif> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close> g_more_elifs()
+        <t_elif> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close> g_more_elifs()
         {
                 // TODO: implement AST
         }
@@ -717,7 +741,7 @@ void g_more_elifs():
 void g_while():
 { }
 {
-        <t_while> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        <t_while> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -726,7 +750,7 @@ void g_while():
 void g_until():
 { }
 {
-        <t_until> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        <t_until> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -735,7 +759,7 @@ void g_until():
 void g_for():
 { }
 {
-        <t_for> <t_parenthesis_group_open> g_range() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        <t_for> <t_parenthesis_group_open> g_range() <t_parenthesis_group_close> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -771,7 +795,7 @@ void g_again():
 void g_try():
 { }
 {
-        <t_try> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close> g_catch() (g_finally())?
+        <t_try> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close> g_catch() (g_finally())?
         {
                 // TODO: implement AST
         }
@@ -780,7 +804,7 @@ void g_try():
 void g_catch():
 { }
 {
-        <t_catch> <t_parenthesis_group_open> ((<t_exception> <t_object_name>) | (g_instance_class()) | g_condition()) <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close> g_more_catchs()
+        <t_catch> <t_parenthesis_group_open> ((<t_exception> <t_object_name>) | (g_instance_class()) | g_condition()) <t_parenthesis_group_close> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close> g_more_catchs()
         {
                 // TODO: implement AST
         }
@@ -798,7 +822,7 @@ void g_more_catchs():
 void g_finally():
 { }
 {
-        <t_finally> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        <t_finally> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -807,7 +831,7 @@ void g_finally():
 void g_throw_exception():
 { }
 {
-        <t_throw> <t_new> <t_object_name> <t_parenthesis_group_open> g_text_value() <t_parenthesis_group_close>
+        <t_throw> <t_new> (<t_object_name> | <t_exception>) <t_parenthesis_group_open> g_text_value() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -825,7 +849,7 @@ void g_not_yet():
 void g_do_while():
 { }
 {
-        <t_do> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close> <t_while> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close>
+        <t_do> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close> <t_while> <t_parenthesis_group_open> g_condition() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -861,7 +885,7 @@ void g_switch():
 void g_case():
 { }
 {
-        <t_case> <t_parenthesis_group_open> g_value() <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() g_break() <t_parenthesis_group_close> g_more_cases()
+        <t_case> <t_parenthesis_group_open> g_value() <t_parenthesis_group_close> <t_parenthesis_group_open> g_more_body() g_break() <t_parenthesis_group_close> g_more_cases()
         {
                 // TODO: implement AST
         }
@@ -888,7 +912,7 @@ void g_more_cases():
 void g_default():
 { }
 {
-        <t_default> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        <t_default> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -897,7 +921,7 @@ void g_default():
 void g_declaration_method():
 { }
 {
-        <t_method> <t_object_name> <t_parenthesis_group_open> (g_parameter())? <t_parenthesis_group_close> <t_parenthesis_group_open> (g_global())? g_instruction() (g_return())? <t_parenthesis_group_close>
+        <t_method> <t_object_name> <t_parenthesis_group_open> (g_parameter())? <t_parenthesis_group_close> <t_parenthesis_group_open> (g_global())? g_more_body() (g_return())? <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -975,7 +999,7 @@ void g_class_methods():
 void g_class_more_methods():
 { }
 {
-        (g_declaration_method())?
+        (g_declaration_method() g_class_more_methods())?
         {
                 // TODO: implement AST
         }
@@ -984,7 +1008,7 @@ void g_class_more_methods():
 void g_construct():
 { }
 {
-        <t_class_construct> <t_parenthesis_group_open> (g_parameter())? <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        <t_class_construct> <t_parenthesis_group_open> (g_parameter())? <t_parenthesis_group_close> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -993,7 +1017,7 @@ void g_construct():
 void g_destruct():
 { }
 {
-        <t_class_destruct> <t_parenthesis_group_open> (g_parameter())? <t_parenthesis_group_close> <t_parenthesis_group_open> g_instruction() <t_parenthesis_group_close>
+        <t_class_destruct> <t_parenthesis_group_open> (g_parameter())? <t_parenthesis_group_close> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -1002,7 +1026,7 @@ void g_destruct():
 void g_operation_assignment():
 { }
 {
-        (g_aritmethic_operation_assignment() | g_bitwise_operation_assignment())
+        (g_aritmethic_operation_assignment() | g_bitwise_operation_assignment() | g_dot_operation_assignment())
 }
 
 void g_aritmethic_operation():
@@ -1054,6 +1078,24 @@ void g_bitwise_more_numbers():
 { }
 {
         (<t_bitwise_operator> (g_number_value() | <t_object_name>) g_bitwise_operation())?
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_dot_operation_assignment():
+{ }
+{
+        <t_dot_assignment> (g_text_value() | <t_object_name>) g_dot_more_text()
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_dot_more_text():
+{ }
+{
+        (<t_dot> g_concanate())?
         {
                 // TODO: implement AST
         }
