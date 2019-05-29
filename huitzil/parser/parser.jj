@@ -27,9 +27,9 @@ SKIP:
 SKIP:
 {
   //TOKEN's name: t_comment_multiline
-  <t_comment_multiline: "#>"(~[])*"<#"> : DEFAULT
+  <"#>"(~["\n","<"])+((("\n"((~["<"])*"<"))*)|"<")"#"> : DEFAULT
   //TOKEN's name: t_comment
-  |<t_comment: "#"(~["\r", "\n"])* > : DEFAULT
+  | <"#"(~["\n"])*> : DEFAULT
 }
 TOKEN:
 {
@@ -651,7 +651,7 @@ void g_import():
 void g_more_imports():
 { }
 {
-        (<t_comma> <t_string_value>)?
+        ((<t_comma> <t_string_value>) | g_import())?
         {
                 // TODO: implement AST
         }
@@ -912,7 +912,7 @@ void g_more_cases():
 void g_default():
 { }
 {
-        <t_default> <t_parenthesis_group_open> g_more_body() <t_parenthesis_group_close>
+        <t_default> <t_parenthesis_group_open> g_more_body() g_break() <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         }
@@ -975,19 +975,25 @@ void g_method_call():
 void g_declaration_class():
 { }
 {
-        <t_class> <t_object_name> (<t_colons> <t_object_name>)? <t_parenthesis_group_open> (g_not_yet() | ((g_attributes())? g_class_methods())) <t_parenthesis_group_close>
+        <t_class> <t_object_name> (<t_colons> <t_object_name>)? <t_parenthesis_group_open> (g_not_yet() | ((g_attribute())? g_class_methods())) <t_parenthesis_group_close>
         {
                 // TODO: implement AST
         } 
 }
 
-void g_attributes():
+void g_attribute():
 { }
 {
-        (g_object_security())? <t_attribute> <t_object_name> <t_assignment> (g_declaration_var_single() | g_declaration_var_strict())
+        (g_object_security())? <t_attribute> <t_object_name> <t_assignment> (g_declaration_var_single() | g_declaration_var_strict()) g_more_attributes()
         {
                 // TODO: implement AST
         }
+}
+
+void g_more_attributes():
+{ }
+{
+        (g_attribute())?
 }
 
 void g_class_methods():

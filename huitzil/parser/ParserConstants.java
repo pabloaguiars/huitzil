@@ -12,10 +12,6 @@ public interface ParserConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int t_comment_multiline = 5;
-  /** RegularExpression Id. */
-  int t_comment = 6;
-  /** RegularExpression Id. */
   int t_conditional = 7;
   /** RegularExpression Id. */
   int t_elif = 8;
@@ -178,8 +174,8 @@ public interface ParserConstants {
     "\"\\t\"",
     "\"\\n\"",
     "\"\\r\"",
-    "<t_comment_multiline>",
-    "<t_comment>",
+    "<token of kind 5>",
+    "<token of kind 6>",
     "<t_conditional>",
     "\"elif\"",
     "\"(\"",

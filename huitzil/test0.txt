@@ -2,12 +2,13 @@
 strict
 
 #import packages
-import "packagepath"
+import "package1","package2"
+import "package3"
+import "package4"
 
 #comment
-
 #>multiline
-comment <
+comment
 multiline
 comment<#
 
@@ -15,7 +16,7 @@ comment<#
 #strict
 var x = int(12)
 #assignment
-x = 'a' 
+x = 15
 # multiple simple declaration
 var a = 15, b = 'a', c = 12.5, d = 12E-12 
 # aritmethic operations
@@ -24,7 +25,7 @@ a = 15 + 15 * 25
 a += 25
 a = "text"
 #concatenate
-a .= " it's"."works".x
+a .= " it's"."works"." ".x
 
 #lambda
 c => a,b : a ** 2 + b ** 2
@@ -104,6 +105,8 @@ do(
 class test (
     #attributes
     public attribute color = ""
+    attribute name = ""
+    private attribute model = ""
 
     #construct
     construct(var h = 1) (
