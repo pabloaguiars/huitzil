@@ -373,12 +373,12 @@ TOKEN:
 TOKEN:
 {
 	//TOKEN's name: t_char_value
-	<t_char_value: ("\""(~["\n"])"\"")|("'"(~["\n"])"'")>{  } : DEFAULT
+	<t_char_value: ("\""(~["\n","'"])"\"")|("'"(~["\n","'"])"'")>{  } : DEFAULT
 }
 TOKEN:
 {
 	//TOKEN's name: t_string_value
-	<t_string_value: ("\""(~["\n"])*"\"")|("'"(~["\n"])*"'")>{  } : DEFAULT
+	<t_string_value: ("\""(~["\n","\""])*"\"")|("'"(~["\n","\""])*"'")>{  } : DEFAULT
 }
 TOKEN:
 {
@@ -567,7 +567,7 @@ void g_dot_operation():
 void g_concanate():
 { }
 {
-        (g_text_value() | <t_object_name>) g_dot_more_text()
+        (g_text_value() | <t_object_name>) (g_dot_more_text())?
         {
                 // TODO: implement AST
         }
@@ -642,16 +642,25 @@ void g_more_expression():
 void g_import():
 { }
 {
-        <t_import> <t_string_value> g_more_imports()
+        <t_import> <t_string_value> g_more_imports_in_line() g_more_imports_new_line()
         {
                 // TODO: implement AST
         }
 }
 
-void g_more_imports():
+void g_more_imports_in_line():
 { }
 {
-        ((<t_comma> <t_string_value>) | g_import())?
+        (<t_comma> g_text_value() g_more_imports_in_line())?
+        {
+                // TODO: implement AST
+        }
+}
+
+void g_more_imports_new_line():
+{ }
+{
+        (g_import())?
         {
                 // TODO: implement AST
         }
@@ -705,7 +714,7 @@ void g_logic_expression():
 void g_more_logic_expressions():
 { }
 {
-        (g_logic_expression())?
+        (<t_logic_operator> g_logic_expression())?
         {
                 // TODO: implement AST
         }
@@ -1047,7 +1056,7 @@ void g_aritmethic_operation():
 void g_aritmethic_operation_assignment():
 { }
 {
-        <t_aritmethic_operator_assignment> g_number_value() g_aritmethic_more_numbers()
+        <t_aritmethic_operator_assignment> g_number_value() (g_aritmethic_more_numbers())?
         {
                 // TODO: implement AST
         }
@@ -1056,7 +1065,7 @@ void g_aritmethic_operation_assignment():
 void g_aritmethic_more_numbers():
 { }
 {
-        (<t_aritmethic_operator> (g_number_value() | <t_object_name>) g_aritmethic_operation())?
+        (<t_aritmethic_operator> (g_number_value() | <t_object_name>) g_aritmethic_operation())
         {
                 // TODO: implement AST
         }
@@ -1092,7 +1101,7 @@ void g_bitwise_more_numbers():
 void g_dot_operation_assignment():
 { }
 {
-        <t_dot_assignment> (g_text_value() | <t_object_name>) g_dot_more_text()
+        <t_dot_assignment> (g_text_value() | <t_object_name>) (g_dot_more_text())?
         {
                 // TODO: implement AST
         }
@@ -1101,7 +1110,7 @@ void g_dot_operation_assignment():
 void g_dot_more_text():
 { }
 {
-        (<t_dot> g_concanate())?
+        (<t_dot> g_concanate())
         {
                 // TODO: implement AST
         }

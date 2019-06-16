@@ -2,9 +2,9 @@
 strict
 
 #import packages
-import "package1","package2"
-import "package3"
+import "package1","package2","package3"
 import "package4"
+import "package5"
 
 #comment
 #>multiline
@@ -20,12 +20,12 @@ x = 15
 # multiple simple declaration
 var a = 15, b = 'a', c = 12.5, d = 12E-12 
 # aritmethic operations
-a = 15 + 15 * 25
+#a = 15 + 15 * 25 / 35 - 20
 # aritmethic operation with assignment
 a += 25
 a = "text"
 #concatenate
-a .= " it's"."works"." ".x
+#a .= " it's"."works"." ".x
 
 #lambda
 c => a,b : a ** 2 + b ** 2
